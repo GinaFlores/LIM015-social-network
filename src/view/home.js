@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/named
+import { logoutClick } from '../lib/index.js';
+
 export const home = () => {
   const sectionHome = document.createElement('section');
   // const nodo = document.createElement('div');
@@ -45,6 +48,7 @@ export const home = () => {
   // sectionHome.appendChild(nodo);
   return sectionHome;
 };
+
 // Funcionalidad de menu hamburguesa
 const navSlide = (element) => {
   const navToggle = element.querySelector('.navToggle');
@@ -54,6 +58,7 @@ const navSlide = (element) => {
     navMenu.classList.toggle('navMenuVisible');
   });
 };
+
 export const navigator = () => {
   const templateNavigator = `
   <header class="header">
@@ -65,7 +70,7 @@ export const navigator = () => {
   <ul class="navMenu">
   <li class="navMenuItem"><a href="#/Home" class="navMenuLink navLink">Home</a></li>
   <li class="navMenuItem"><a href="#/Profile" class="navMenuLink navLink">Profile</a></li>
-  <li class="navMenuItem"><a href="#/LogIn" class="navMenuLink navLink">LogOut</a></li>
+  <li class="navMenuItem"><a href="#/LogIn" class="navMenuLink navLink" id="btnLogout">LogOut</a></li>
   </ul>
   </nav>
   </header>
@@ -73,6 +78,11 @@ export const navigator = () => {
   const sectionNavigator = document.createElement('div');
   sectionNavigator.classList.add('navigator');
   sectionNavigator.innerHTML = templateNavigator;
+
+  // Carga de Cerrar Sesión
+  const btnCerrarSesion = sectionNavigator.querySelector('#btnLogout');
+  btnCerrarSesion.addEventListener('click', logoutClick);
+
   navSlide(sectionNavigator);
   return sectionNavigator;
 };

@@ -1,3 +1,5 @@
+import { logInWithGoogleClick } from '../lib/index.js';
+
 export const logInTemplate = () => {
   const sectionLogIn = document.createElement('div');
   sectionLogIn.classList.add('iOne');
@@ -8,8 +10,13 @@ export const logInTemplate = () => {
     </div>
     <form id="logInForm">
       <input id="emailLogIn" type="email" placeholder="Enter Email" class="inputForm" required>
+      <span id="errorLogInEmail" class="error"></span><br>
       <input id="passwordLogIn" type="password" placeholder="Enter Password" class="inputForm" required>
+      <span id="errorLogInPassword" class="error"></span><br>
+      <span id="emptyLogIn" class="error"></span><br>
       <button type="button" class="btnLogIn">Log In</button><br>
+      <a href="" class="linkResetP">¿Olvidaste tu contraseña?</a>
+      <span id="messageSendEmail" class=""></span><br>
     </form>
     <span>New here? <a id="linkRegister" href="#/Register">Register</a></span>
     <div class="divIconG">
@@ -21,41 +28,51 @@ export const logInTemplate = () => {
     `;
   sectionLogIn.innerHTML = templateLogIn;
 
-  const messageError = sectionLogIn.querySelector('#error-logueo');
+  // Inicia sesion con cuenta Google
+  const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
+  btnGoogle.addEventListener('click', (logInWithGoogleClick));
 
-  const inicioSesionGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    console.log(inicioSesionGoogle);
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        /* const credential = result.credential;
-        const token = credential.accessToken; */
-        const user = result.user;
-        console.log('user', user);
-        // console.log('logueado');
-        window.location.hash = '#/Home';
-        messageError.innerHTML = '';
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        /* const errorCode = error.code;
-        const email = error.email;
-        const credential = error.credential; */
-        console.log('error', errorMessage);
-        // console.log('error');
-        /* window.location.hash = '#/Error404'; */
-      });
-  };
-
-  if (firebase.auth().currentUser === null) {
+  /* if (firebase.auth().currentUser === null) {
     window.location.hash = '#/LogIn';
     const sesionActivaGoogle = false;
     console.log('sesion activa', sesionActivaGoogle);
-  }
-
-  const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
-  btnGoogle.addEventListener('click', inicioSesionGoogle, false);
+  } */
   return sectionLogIn;
 };
+
+/* btnLogin.addEventListener('click', (event) => {
+  event.preventDefault();
+  const LogInEmail = containerAll.querySelector('#emailLogIn').value;
+  const LogInPassword = containerAll.querySelector('#passwordLogIn').value;
+  const emptyLogIn = containerAll.querySelector('#emptyLogIn');
+  const errorLogInEmail = containerAll.querySelector('#errorLogInEmail');
+  const errorLogInPassword = containerAll.querySelector('#errorLogInPassword');
+  const messages = [];
+      if (emailLogin === '' || passwordLogin === '') {
+          messages.push('Debe llenar todos los campos');
+          errorAllLogin.innerHTML = messages;
+          errorEmailLogin.innerHTML = '';
+          errorpasswordLogin.innerHTML = '';
+  } else {
+    loginUser(emailLogin, passwordLogin)
+      .then((userCredential) => {
+        localStorage.setItem('email', userCredential.user.email);
+        localStorage.setItem('uid', userCredential.user.uid);
+        window.location.hash = '#/application';
+      }).catch((err) => {
+        const errorCode = err.code;
+        if (errorCode === 'auth/wrong-password') {
+          errorpasswordLogin.innerHTML = 'Usuario y/o contraseña incorrecta';
+        } else if (errorCode === 'auth/invalid-email') {
+          errorEmailLogin.innerHTML = 'Correo electrónico no válido';
+        } else if (errorCode === 'auth/user-not-found') {
+          errorpasswordLogin.innerHTML = 'Usuario y/o contraseña incorrecta';
+        }
+      });
+    localStorage.setItem('email1', emailLogin);
+    errorEmailLogin.innerHTML = '';
+    errorpasswordLogin.innerHTML = '';
+    errorAllLogin.innerHTML = '';
+  }
+});
+ */
