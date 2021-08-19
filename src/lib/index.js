@@ -1,19 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { logInWithGoogle, logout, registerWithEmail } from '../firebase/firebaseAuth.js';
-
-// registro de usuario con email y password
-export const registerWithEmailClick = (email, password) => {
-  registerWithEmail()
-    .then(userCredential => {
-      userCredential.user
-        .updateProfile({
-          displayName: nameUser,
-        });
-    })
-    .catch((error) => {
-      userCredential.message;
-    });
-};
+import { logInWithGoogle, logout /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
 
 // inicio de sesion con google
 export const logInWithGoogleClick = () => {

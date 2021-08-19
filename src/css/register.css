@@ -1,40 +1,45 @@
 .iTwo {
-margin: auto;
-max-width: 400px;
-padding: 30px;
-border-radius: 15px;
-text-align: center;
+    margin: auto;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
 }
 .divCabecera {
-padding: 0 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 }
 .divCabecera h1 {
-color: #120078;
-margin-top: 12.5px;
+    color: #120078;
+    margin-top: 12.5px;
 }
 .imgLogo {
-width: 200px;
+    width: 200px;
 }
 .inputForm {
-padding: 8px;
-margin-bottom: 15px;
-width: 100%;
-border-radius: 8px;
-border: 1px solid #9D0191;
-outline: none;
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #9D0191;
+    outline: none;
 }
 .btnRegister {
-background-color: #120078;
-width: 5.5rem;
-color: white;
-font-size: 15px;
-padding: 8px;
-border: 1px solid #120078;
-border-radius: 10px;
-margin-bottom: 10px;
+    background-color: #120078;
+    width: 5.5rem;
+    color: white;
+    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #120078;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .iGoogle {
-width: 26.42px;
-height: 25.81px;
-margin-top: 10px;
+    width: 26.42px;
+    height: 25.81px;
+    margin-top: 10px;
+}
+.errorMessage {
+    color: red;
+    font-weight: bold;
 }
