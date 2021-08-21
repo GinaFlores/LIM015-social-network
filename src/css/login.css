@@ -7,11 +7,10 @@
     background-image: url(../img/diseñoTuristik.gif);
     background-position: center;
     background-size: cover;
-    /* background-attachment: fixed; */
 }
 .divLoginForm {
     margin: auto;
-    max-width: 400px;
+    /* max-width: 400px; */
     background: rgba(255, 255, 252, 0.74);
     box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
     padding: 30px;
@@ -82,22 +81,26 @@ footer {
     font-weight: 600;
     text-align: center;
 }
-@media screen and (min-width: 900px) and (max-width: 1200px) {
-    .positionLogin{
-        height: 70vh;
+@media(min-width: 1400px) {
+    .iOne {
+        height: 100vh;
+        padding: 40px;
+    }
+    .positionLogin {
+        margin: 12% 0 12% 65%;
     }
 }
-@media(min-width: 900px){
+@media(min-width: 900px) {
     .imgLogo {
         width: 250px;
         height: 145px;
     }
-    .positionLogin{
+    /* .positionLogin {
         margin: 1% 0 1% 65%;
-    }
+    } */
 }
-@media(max-width: 780px){
-    .positionLogin{
+@media(max-width: 780px) {
+    .positionLogin {
         margin: 1% 0 1% 50%;
     }
 }

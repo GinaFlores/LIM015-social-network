@@ -3,11 +3,10 @@
     background-image: url(../img/diseñoTuristik.gif);
     background-position: center;
     background-size: cover;
-    /* background-attachment: fixed; */
 }
 .divRegisterForm {
     margin: auto;
-    max-width: 400px;
+    /* max-width: 400px; */
     background: rgba(255, 255, 252, 0.74);
     box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
     padding: 30px;
@@ -46,18 +45,22 @@
     color: red;
     font-weight: bold;
 }
-@media screen and (min-width: 900px) and (max-width: 1200px) {
-    .positionRegister{
-        height: 70vh;
+@media (min-width: 1400px){
+    .iTwo {
+        height: 100vh;
+        padding: 40px;
+    }
+    .positionRegister {
+        margin: 12% 0 12% 65%;
     }
 }
-@media(min-width: 900px){
-    .positionRegister{
+@media(min-width: 900px) {
+    /* .positionRegister {
         margin: 1% 0 1% 65%;
-    }
+    } */
 }
-@media(max-width: 780px){
-    .positionRegister{
+@media(max-width: 780px) {
+    .positionRegister {
         margin: 1% 0 1% 50%;
     }
 }
