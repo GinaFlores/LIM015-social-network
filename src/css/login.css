@@ -1,49 +1,112 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    box-sizing: border-box;
 }
 .iOne {
-margin: auto;
-max-width: 400px;
-padding: 30px;
-border-radius: 15px;
-text-align: center;
+    padding: 10px;
+    background-image: url(../img/diseñoTuristik.gif);
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+}
+.divLoginForm {
+    margin: auto;
+    max-width: 400px;
+    background: rgba(255, 255, 252, 0.74);
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.positionLogin {
+    margin: 1% 0 1% 60%;
 }
 .divCabecera {
-padding: 0 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 }
-.divCabecera h1 {
-color: #120078;
-margin-top: 12.5px;
+.divCabecera h2 {
+    color: #120078;
+    font-size: 35px;
+    margin-top: 12.5px;
 }
 .imgLogo {
-width: 200px;
+    width: 200px;
+    height: 145px;
 }
-.inputForm {
-padding: 8px;
-margin-bottom: 15px;
-width: 100%;
-border-radius: 8px;
-border: 1px solid #9D0191;
-outline: none;
+.inputForm1 {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 1px solid #9D0191;
+    outline: none;
+    cursor: pointer;
+    transform: scale(0.95);
+}.linkResetP {
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 .btnLogIn {
-background-color: #120078;
-width: 5.5rem;
-color: white;
-font-size: 15px;
-padding: 8px;
-border: 1px solid #120078;
-border-radius: 10px;
-margin-bottom: 10px;
+    background-color: #120078;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    border: 1px solid #120078;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transform: scale(0.95);
+}
+.link {
+    font-size: 1.1rem;
 }
 .iGoogle {
-width: 26.42px;
-height: 25.81px;
-margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    border: 0;
+    background: rgba(255, 255, 252, 0.74);
 }
 #btnGoogle {
     border: 0;
-    background: white;
+    background: rgba(255, 255, 252, 0.74);
 }
+footer {
+    background-color: #FD3A69;
+    color: white;
+    padding: 17.5px;
+    font-weight: 600;
+    text-align: center;
+}
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+    .positionLogin{
+        height: 70vh;
+    }
+}
+@media(min-width: 900px){
+    .imgLogo {
+        width: 250px;
+        height: 145px;
+    }
+    .positionLogin{
+        margin: 1% 0 1% 65%;
+    }
+}
+@media(max-width: 780px){
+    .positionLogin{
+        margin: 1% 0 1% 50%;
+    }
+}
+@media (max-width: 540px) {
+    .positionLogin {
+        margin: 1%;
+    }
+    .divCabecera h2 {
+        font-size: 30px;
+    }
+}
+

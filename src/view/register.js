@@ -1,34 +1,33 @@
 import { registerWithEmail } from '../firebase/firebaseAuth.js';
 
 export const registerTemplate = () => {
-  const sectionRegister = document.createElement('div');
+  const sectionRegister = document.createElement('section');
   sectionRegister.classList.add('iTwo');
   const templateRegister = `
+  <div class="divRegisterForm positionRegister">
     <div class="divCabecera">
       <img src="./img/logoTuristik.png" class="imgLogo" alt="LogoTuristik">
     </div>
     <form id="formRegister">
       <!-- USERNAME INPUT -->
-      <input type="text" placeholder="Full Name" id="nameRegister" class="inputForm" required>
+      <input type="text" placeholder="Full Name" id="nameRegister" class="inputForm2" required>
       <!-- EMAIL INPUT -->
-      <input type="email" placeholder="Email" id="emailRegister" class="inputForm" required>
+      <input type="email" placeholder="Email" id="emailRegister" class="inputForm2" required>
       <span id="errorEmail" class="errorMessage"></span>
       <!-- PASSWORD INPUT -->
-      <input type="password" placeholder="Password" id="passwordRegister" class="inputForm" required>
+      <input type="password" placeholder="Password" id="passwordRegister" class="inputForm2" required>
       <span id="errorPassword" class="errorMessage"></span>
       <!-- CONFIRMED PASSWORD INPUT -->
-      <input type="password" placeholder="Confirmed Password" id="confirmedPassword" class="inputForm" required>
+      <input type="password" placeholder="Confirmed Password" id="confirmedPassword" class="inputForm2" required>
       <span id="errorConfirmPassword" class="errorMessage"></span>
       <div clas="errorConten">
         <span id="errorGeneral" class="errorMessage"></span>
       </div>
       <button type="submit" class="btnRegister" id="registerButton" >Register</button>
-      </form>
-    <span>Already a member? <a id="linkLogIn" href="#/LogIn">Log In</a> </span>
-    <div class="divIconG">
-      <img src="./img/icons8-logo-de-google.svg" alt="iGoogle" class="iGoogle">
-    </div>
-    `;
+    </form>
+    <span class="link">Already a member? <a id="linkLogIn" href="#/LogIn">Log In</a> </span>
+  </div>
+  `;
   sectionRegister.innerHTML = templateRegister;
   const btnRegister = sectionRegister.querySelector('#registerButton');
   const errorEmail = sectionRegister.querySelector('#errorEmail');
