@@ -43,7 +43,12 @@
     outline: none;
     cursor: pointer;
     transform: scale(0.95);
-}.linkResetP {
+}
+.errorLogin {
+    color : #120078;
+    font-weight: bold; 
+}
+.linkResetP {
     text-decoration: none;
     font-size: 1.1rem;
 }
