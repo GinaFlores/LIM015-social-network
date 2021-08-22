@@ -57,10 +57,17 @@ export const logInTemplate = () => {
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
           resetPassword();
-          localStorage.setItem('email', userCredential.user.email);
-          localStorage.setItem('uid', userCredential.user.uid);
+          if (userCredential.user.displayName === null) {
+            localStorage.getItem('userName');
+          } else {
+            localStorage.setItem('userName', userCredential.user.displayName);
+          }
+          localStorage.setItem('userEmail', userCredential.user.email);
+          localStorage.setItem('userPhoto', userCredential.user.photoURL);
+          localStorage.setItem('userId', userCredential.user.uid);
           window.location.hash = '#/Home';
-        }).catch((err) => {
+        })
+        .catch((err) => {
           const errorCode = err.code;
           if (errorCode === 'auth/wrong-password') {
             errorLogInPassword.innerHTML = 'Usuario y/o contraseña incorrecta';
