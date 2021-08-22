@@ -14,3 +14,10 @@ export const logInWithGoogle = () => {
 
 // Cerrar Sesión
 export const logout = () => firebase.auth().signOut();
+
+// propiedad que usuario esta activo
+export const currentUser = () => firebase.auth().currentUser;
+
+export const changePasword = (email) => (
+  firebase.auth().sendPasswordResetEmail(email)
+);

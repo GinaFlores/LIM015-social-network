@@ -33,48 +33,37 @@ export const logInTemplate = () => {
   // Inicia sesion con cuenta Google
   const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
   btnGoogle.addEventListener('click', (logInWithGoogleClick));
+  return sectionLogIn;
 
   /* if (firebase.auth().currentUser === null) {
     window.location.hash = '#/LogIn';
     const sesionActivaGoogle = false;
     console.log('sesion activa', sesionActivaGoogle);
   } */
-  return sectionLogIn;
+
+  /* const loginUser = (email, password) => {
+    firebase
+      .auth()
+      .sigInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
+  */
 };
 
-/* btnLogin.addEventListener('click', (event) => {
-  event.preventDefault();
-  const LogInEmail = containerAll.querySelector('#emailLogIn').value;
-  const LogInPassword = containerAll.querySelector('#passwordLogIn').value;
-  const emptyLogIn = containerAll.querySelector('#emptyLogIn');
-  const errorLogInEmail = containerAll.querySelector('#errorLogInEmail');
-  const errorLogInPassword = containerAll.querySelector('#errorLogInPassword');
-  const messages = [];
-      if (emailLogin === '' || passwordLogin === '') {
-          messages.push('Debe llenar todos los campos');
-          errorAllLogin.innerHTML = messages;
-          errorEmailLogin.innerHTML = '';
-          errorpasswordLogin.innerHTML = '';
-  } else {
-    loginUser(emailLogin, passwordLogin)
-      .then((userCredential) => {
-        localStorage.setItem('email', userCredential.user.email);
-        localStorage.setItem('uid', userCredential.user.uid);
-        window.location.hash = '#/application';
-      }).catch((err) => {
-        const errorCode = err.code;
-        if (errorCode === 'auth/wrong-password') {
-          errorpasswordLogin.innerHTML = 'Usuario y/o contraseña incorrecta';
-        } else if (errorCode === 'auth/invalid-email') {
-          errorEmailLogin.innerHTML = 'Correo electrónico no válido';
-        } else if (errorCode === 'auth/user-not-found') {
-          errorpasswordLogin.innerHTML = 'Usuario y/o contraseña incorrecta';
-        }
-      });
-    localStorage.setItem('email1', emailLogin);
-    errorEmailLogin.innerHTML = '';
-    errorpasswordLogin.innerHTML = '';
-    errorAllLogin.innerHTML = '';
-  }
+/* firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
 });
  */
