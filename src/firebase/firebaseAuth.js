@@ -7,12 +7,8 @@ export const registerWithEmail = (email, password) => firebase.auth()
   .createUserWithEmailAndPassword(email, password);
 
 // Funcion para Iniciar Sesión con Correo y Contraseña
-export const logInWithEmail = (emailLogin, passwordLogin) => firebase.auth()
-  .signInWithEmailAndPassword(emailLogin, passwordLogin);
-
-//Función para limpiar contraseña
-export const resetPassword = (emailLogin) => firebase.auth()
-  .sendPasswordResetEmail(emailLogin);
+export const logInWithEmail = (email, password) => firebase.auth()
+  .signInWithEmailAndPassword(email, password);
 
 // Iniciar sesion con cuenta de Google
 export const logInWithGoogle = () => {

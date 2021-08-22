@@ -38,6 +38,10 @@ export const logInTemplate = () => {
   const errorLogInGeneral = sectionLogIn.querySelector('#errorLogInGeneral');
   let message = [];
 
+  // Función para limpiar contraseña
+  const resetPassword = (email) => firebase.auth()
+    .sendPasswordResetEmail(email);
+
   // LogIn con Correo y Contraseña
   btnLogIn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -52,6 +56,7 @@ export const logInTemplate = () => {
     } else {
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
+          resetPassword();
           localStorage.setItem('email', userCredential.user.email);
           localStorage.setItem('uid', userCredential.user.uid);
           window.location.hash = '#/Home';
