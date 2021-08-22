@@ -54,6 +54,11 @@
         margin: 12% 0 12% 65%;
     }
 }
+@media (max-width: 1400px) {
+    .divRegisterForm {
+        max-width: 400px;
+    }
+}
 @media(min-width: 900px) {
     /* .positionRegister {
         margin: 1% 0 1% 65%;

@@ -90,6 +90,11 @@ footer {
         margin: 12% 0 12% 65%;
     }
 }
+@media (max-width: 1400px) {
+    .divLoginForm {
+        max-width: 400px;
+    }
+}
 @media(min-width: 900px) {
     .imgLogo {
         width: 250px;
