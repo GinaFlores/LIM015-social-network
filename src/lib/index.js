@@ -23,9 +23,8 @@ export const logInWithGoogleClick = () => {
 };
 
 export const observadorWatcher = () => {
-  firebase.auth().onAuthStateChanged((user2) => {
-    const user = firebase.auth().currentUser;
-    console.log({ user, user2 });
+  firebase.auth().onAuthStateChanged((user) => {
+    console.log({ user });
     let photo;
     let name;
     if (user !== null) {
@@ -35,6 +34,7 @@ export const observadorWatcher = () => {
       // menuNavegacionHome(displayName, photoURL);
     } else {
       console.log('hola');
+      window.location.hash = '#/LogIn';
     }
   });
 };
