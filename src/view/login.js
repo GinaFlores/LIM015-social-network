@@ -38,10 +38,6 @@ export const logInTemplate = () => {
   const errorLogInGeneral = sectionLogIn.querySelector('#errorLogInGeneral');
   let message = [];
 
-  // Función para limpiar contraseña
-  const resetPassword = (email) => firebase.auth()
-    .sendPasswordResetEmail(email);
-
   // LogIn con Correo y Contraseña
   btnLogIn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -54,11 +50,8 @@ export const logInTemplate = () => {
       errorLogInEmail.innerHTML = '';
       errorLogInPassword.innerHTML = '';
     } else {
-      console.log({emailLogIn, passwordLogIn});
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
-          console.log({userCredential});
-          //resetPassword();
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
           } else {
@@ -92,23 +85,4 @@ export const logInTemplate = () => {
 
   observadorWatcher();
   return sectionLogIn;
-
-  /* const loginUser = (email, password) => {
-    firebase
-    .auth()
-    .sigInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      console.log(userCredential);
-    })
-    .catch((error) => {
-      console.log('error', error);
-    });
-  };
-  */
 };
-
-/* if (firebase.auth().currentUser === null) {
-  window.location.hash = '#/LogIn';
-  const sesionActivaGoogle = false;
-  console.log('sesion activa', sesionActivaGoogle);
-} */
