@@ -1,4 +1,4 @@
-import { registerWithEmail } from '../firebase/firebaseAuth.js';
+import { registerWithEmail, emailVerication } from '../firebase/firebaseAuth.js';
 
 export const registerTemplate = () => {
   const sectionRegister = document.createElement('section');
@@ -20,7 +20,7 @@ export const registerTemplate = () => {
       <!-- CONFIRMED PASSWORD INPUT -->
       <input type="password" placeholder="Confirmed Password" id="confirmedPassword" class="inputForm2" required>
       <span id="errorConfirmPassword" class="errorMessage"></span>
-      <div clas="errorConten">
+      <div class="errorConten">
         <span id="errorGeneral" class="errorMessage"></span>
       </div>
       <button type="submit" class="btnRegister" id="registerButton" >Register</button>
@@ -35,10 +35,6 @@ export const registerTemplate = () => {
   const errorConfirmPassword = sectionRegister.querySelector('#errorConfirmPassword');
   const errorGeneral = sectionRegister.querySelector('#errorGeneral');
   let messages = [];
-
-  const EmailVerication = () => (
-    firebase.auth().currentUser.sendEmailVerification()
-  );
 
   // Registro de cuenta con correo y contraseña
   btnRegister.addEventListener('click', (e) => {
@@ -63,7 +59,7 @@ export const registerTemplate = () => {
     } else {
       registerWithEmail(emailRegister, passwordRegister)
         .then(() => {
-          EmailVerication();
+          emailVerication();
           window.alert('mensaje de verificacion enviado');
           window.location.hash = '#/LogIn';
         }).catch((err) => {

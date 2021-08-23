@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { logInWithGoogle, logout /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
+import { logInWithGoogle, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
 
 // inicio de sesion con google
 export const logInWithGoogleClick = () => {
@@ -23,8 +23,8 @@ export const logInWithGoogleClick = () => {
 };
 
 // cerrar sesion
-export const logoutClick = () => {
-  logout()
+export const logOutClick = () => {
+  logOut()
     .then(() => {
       console.log('sesion cerrada');
       window.location.hash = '#/LogIn';

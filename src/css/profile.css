@@ -1,3 +1,4 @@
 .containerProfile {
-    top: 7rem;
+    max-width: 1400px;
+    margin: 6rem 20px 15px 20px;
 }

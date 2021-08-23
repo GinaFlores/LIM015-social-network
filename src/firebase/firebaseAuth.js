@@ -18,12 +18,17 @@ export const logInWithGoogle = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
+export const emailVerication = () => (
+  firebase.auth().currentUser.sendEmailVerification()
+);
+
 // Cerrar Sesión
-export const logout = () => firebase.auth().signOut();
+export const logOut = () => firebase.auth().signOut();
 
 // propiedad que usuario esta activo
-export const currentUser = () => firebase.auth().currentUser;
+/* export const currentUser = () => firebase.auth().currentUser; */
 
-export const changePasword = (email) => (
+// Cambiar contraseña
+/* export const changePasword = (email) => (
   firebase.auth().sendPasswordResetEmail(email)
-);
+); */

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/named
-import { logoutClick } from '../lib/index.js';
+import { logOutClick } from '../lib/index.js';
 
 export const home = () => {
   const sectionHome = document.createElement('section');
@@ -81,7 +81,7 @@ export const navigator = () => {
 
   // Carga de Cerrar Sesión
   const btnCerrarSesion = sectionNavigator.querySelector('#btnLogout');
-  btnCerrarSesion.addEventListener('click', logoutClick);
+  btnCerrarSesion.addEventListener('click', logOutClick);
 
   navSlide(sectionNavigator);
   return sectionNavigator;
