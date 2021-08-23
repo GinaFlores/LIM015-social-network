@@ -15,7 +15,9 @@ const initialize = () => {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   changeView(window.location.hash);
-  window.addEventListener('hashchange', () => changeView(window.location.hash));
-  observadorWatcher();
+  window.addEventListener('hashchange', () => {
+    changeView(window.location.hash);
+    observadorWatcher();
+  });
 };
 window.addEventListener('load', initialize);
