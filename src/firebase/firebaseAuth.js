@@ -19,7 +19,7 @@ export const emailVerication = () => (
 // Cerrar Sesión
 export const logOut = () => firebase.auth().signOut();
 
-// propiedad que usuario esta activo
+// Propiedad que usuario esta activo
 /* export const currentUser = () => firebase.auth().currentUser; */
 
 // Cambiar contraseña

@@ -22,6 +22,23 @@ export const logInWithGoogleClick = () => {
     });
 };
 
+export const observadorWatcher = () => {
+  firebase.auth().onAuthStateChanged((user2) => {
+    const user = firebase.auth().currentUser;
+    console.log({ user, user2 });
+    let photo;
+    let name;
+    if (user !== null) {
+      name = user.displayName;
+      photo = user.photoURL;
+      console.log(name, photo);
+      // menuNavegacionHome(displayName, photoURL);
+    } else {
+      console.log('hola');
+    }
+  });
+};
+
 // cerrar sesion
 export const logOutClick = () => {
   logOut()

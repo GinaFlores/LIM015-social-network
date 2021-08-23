@@ -1,4 +1,4 @@
-import { logInWithGoogleClick } from '../lib/index.js';
+import { logInWithGoogleClick, observadorWatcher } from '../lib/index.js';
 
 export const logInTemplate = () => {
   const sectionLogIn = document.createElement('section');
@@ -16,7 +16,7 @@ export const logInTemplate = () => {
       <span id="errorLogInPassword" class="error"></span><br>
       <span id="emptyLogIn" class="error"></span>
       <a href="" class="linkResetP">¿Olvidaste tu contraseña?</a>
-      <button type="button" class="btnLogIn">Log In</button>
+      <button type="button" id="btnLogIn" class="btnLogIn">Log In</button>
       <span id="messageSendEmail" class=""></span><br>
     </form>
     <span class="link">New here? <a id="linkRegister" href="#/Register">Register</a></span>
@@ -33,37 +33,26 @@ export const logInTemplate = () => {
   // Inicia sesion con cuenta Google
   const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
   btnGoogle.addEventListener('click', (logInWithGoogleClick));
-  return sectionLogIn;
 
-  /* if (firebase.auth().currentUser === null) {
-    window.location.hash = '#/LogIn';
-    const sesionActivaGoogle = false;
-    console.log('sesion activa', sesionActivaGoogle);
-  } */
+  observadorWatcher();
+  return sectionLogIn;
 
   /* const loginUser = (email, password) => {
     firebase
-      .auth()
-      .sigInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log('error', error);
-      });
+    .auth()
+    .sigInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log(userCredential);
+    })
+    .catch((error) => {
+      console.log('error', error);
+    });
   };
   */
 };
 
-/* firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  });
-});
- */
+/* if (firebase.auth().currentUser === null) {
+  window.location.hash = '#/LogIn';
+  const sesionActivaGoogle = false;
+  console.log('sesion activa', sesionActivaGoogle);
+} */
