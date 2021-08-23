@@ -6,6 +6,13 @@
 export const registerWithEmail = (email, password) => firebase.auth()
   .createUserWithEmailAndPassword(email, password);
 
+// Funcion para Iniciar Sesión con Correo y Contraseña
+export const logInWithEmail = (email, password) => {
+  const login = firebase.auth().signInWithEmailAndPassword(email, password);
+  console.log({ login });
+  return login;
+};
+
 // Iniciar sesion con cuenta de Google
 export const logInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
