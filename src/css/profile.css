@@ -1,4 +1,39 @@
 .containerProfile {
     max-width: 1400px;
-    margin: 6rem 20px 15px 20px;
+}
+.frontProfile {
+    width: 100%;
+    height: 300px;
+    background-image: url(../img/fondo.jpg);
+    background-size: cover;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.photoUser {
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/viajera1.png);
+    background-size: 100%;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-top: -90px;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+    .frontProfile {
+        height: 200px;
+    }
+    .photoUser {
+        width: 125px;
+        height: 125px;
+        margin-top: -75px;
+    }
 }
