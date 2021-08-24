@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-cycle
 import { changeView } from './controller/router.js';
-import { observadorWatcher } from './lib/index.js';
 
 const initialize = () => {
   // Firebase configuration
@@ -17,7 +16,7 @@ const initialize = () => {
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => {
     changeView(window.location.hash);
-    observadorWatcher();
+    /* observadorWatcher(); */
   });
 };
 window.addEventListener('load', initialize);

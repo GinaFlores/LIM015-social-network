@@ -2,35 +2,44 @@ export const profile = () => {
   const sectionProfile = document.createElement('section');
   sectionProfile.classList.add('profile');
   const templateProfile = `
+  <!-- Perfil -->
   <div class="containerProfile">
-    <section>
-      <div id="photoProfile></div>
-      <p id="nameProfile"></p>
-    </section>
-    <div class="posts">
-      <textarea name="post" id="postUser" class="postUser" placeholder="¿Qué estás pensando?" row=20 column=60></textarea>
+    <div class="frontProfile"></div>
+    <div class="container">
+      <div class="photoUser"></div>
     </div>
-    <div class="btnPosts">
-      <button id="buttonImg" type="button" class="buttonImg">&#xf009</button>
+    <div class="details">
+      <h3>Gigi Gonzales</h3>
+      <p>Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
     </div>
-    <div class="buttons">
-      <button id="buttonShare" type="submit" class="buttonShare">Share</button>
-    </div>
-    <section>
+    <!-- Escribir Publicación -->
+    <div class="divPost">
+      <div id="photoProfile" class="imgPost"></div>
+      <div class="post">
+        <div class="postGroup">
+          <textarea id="content" class="content"placeholder="Me acompañarian a ....?"required></textarea>
+        </div>
+        <button id="postButton" type="submit"class="postButton">Publicar</button>
+      </div>
+    </div><br>
+    <div class="divPost">
+        <div class="profile">
+          <div id="photoProfile" class="imgPost"></div>
+          <h4 id="userName">Gigi Gonzales</h4>
+          <span id="time">1 min.</span>
+        </div>
+      </div>
       <div class="postMessage">
         <div>
           <p>Post by<span id="userNamePost"></span></p>
-          <span id="closeItem"><i class="fas fa-times-circle"></i></span>
+          <span id="closeItem"><i class="fasfa-trash"></i></span>
         </div>
-        <div id="postContent"></div>
-        <div id="reactionPost">
-          <span><i class="fas fa-heart"></i></span>
-          <span><i class="fas fa-share-square"></i></span>
-        </div>
+      <div id="postContent"></div>
+      <div id="reactionPost">
+        <span><i class="fas fa-heart"></i></span>
+        <span><i class="fas fa-edit"></i></span>
       </div>
-    </section>
   </div>
-
   `;
   sectionProfile.innerHTML = templateProfile;
 

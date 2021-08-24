@@ -1,4 +1,4 @@
-import { logInWithGoogleClick, observadorWatcher } from '../lib/index.js';
+import { logInWithGoogleClick } from '../lib/index.js';
 import { logInWithEmail } from '../firebase/firebaseAuth.js';
 
 export const logInTemplate = () => {
@@ -38,10 +38,6 @@ export const logInTemplate = () => {
   const errorLogInGeneral = sectionLogIn.querySelector('#errorLogInGeneral');
   let message = [];
 
-  // Función para limpiar contraseña
-  const resetPassword = (email) => firebase.auth()
-    .sendPasswordResetEmail(email);
-
   // LogIn con Correo y Contraseña
   btnLogIn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -54,11 +50,10 @@ export const logInTemplate = () => {
       errorLogInEmail.innerHTML = '';
       errorLogInPassword.innerHTML = '';
     } else {
-      console.log({emailLogIn, passwordLogIn});
+      console.log({ emailLogIn, passwordLogIn });
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
-          console.log({userCredential});
-          //resetPassword();
+          console.log({ userCredential });
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
           } else {
@@ -90,7 +85,11 @@ export const logInTemplate = () => {
   const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
   btnGoogle.addEventListener('click', (logInWithGoogleClick));
 
-  observadorWatcher();
+  const btnRegister = sectionLogIn.querySelector('#linkRegister');
+  btnRegister.addEventListener('click', () => {
+    window.location.hash = '#/Register';
+  });
+
   return sectionLogIn;
 
   /* const loginUser = (email, password) => {
