@@ -1,6 +1,3 @@
-.containerProfile {
-    max-width: 1400px;
-}
 .frontProfile {
     width: 100%;
     height: 300px;
@@ -28,6 +25,7 @@
 }
 .imgPost {
     background-image: url(../img/viajera1.png);
+    background-repeat: no-repeat;
     width: 50px;
     height: 50px;
     background-size: 100%;
@@ -35,9 +33,52 @@
 }
 .divPost {
     display: flex;
+    padding: 20px;
+    justify-content: center;
+    margin: 0 25%;
+}
+textarea {
+    resize: none;
+    border-radius: 4px;
+    align-content: center;
+    width: -webkit-fill-available;
+    padding: 10px;
+}
+.post {
+    margin-left: 0.3rem;
+}
+.postButton {
+    justify-content: flex-end;
+    border-radius: 3px;
+    background-color: #120078;
+    color: white;
+    font-weight: 900;
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 8.7rem;
+}
+.datoProfile {
+    display: flex;
+    justify-content: center;
+}
+.datoProfile h4 {
+    padding-left: 0.4rem;
+}
+.datoProfile span {
+    padding-left: 50%;
+}
+.postProfile {
+    margin: 0 25%;
+}
+@media (min-width: 830px) {
+    .datoProfile {
+        line-height: 3;
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 540px) {
     .frontProfile {
         height: 220px;
     }
@@ -45,5 +86,9 @@
         width: 125px;
         height: 125px;
         margin-top: -75px;
+    }
+    .divPost, .postProfile {
+        margin: 1%;
+        width: 98%;
     }
 }

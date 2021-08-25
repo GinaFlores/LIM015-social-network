@@ -17,28 +17,29 @@ export const profile = () => {
       <div id="photoProfile" class="imgPost"></div>
       <div class="post">
         <div class="postGroup">
-          <textarea id="content" class="content"placeholder="Me acompañarian a ....?"required></textarea>
+          <textarea id="content" class="content" cols="30" roes="5" placeholder="¿Cuál es tu próximo destino?" required></textarea>
         </div>
         <button id="postButton" type="submit"class="postButton">Publicar</button>
       </div>
-    </div><br>
-    <div class="divPost">
-        <div class="profile">
+    </div>
+    <div class="postProfile">
+      <div class="profile">
+        <div class="datoProfile">
           <div id="photoProfile" class="imgPost"></div>
           <h4 id="userName">Gigi Gonzales</h4>
           <span id="time">1 min.</span>
         </div>
+        <textarea cols="30" roes="5" placeholder="Hola chicas, mi próximo destino es Trujillo.💖😎✈"></textarea>
       </div>
       <div class="postMessage">
-        <div>
-          <p>Post by<span id="userNamePost"></span></p>
-          <span id="closeItem"><i class="fas fa-trash"></i></span>
-        </div>
+        <p>Post by<span id="userNamePost"></span></p>
+        <span id="closeItem"><i class="fas fa-trash"></i></span>
       <div id="postContent"></div>
       <div id="reactionPost">
         <span><i class="fas fa-heart"></i></span>
         <span><i class="fas fa-edit"></i></span>
       </div>
+    </div>
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
