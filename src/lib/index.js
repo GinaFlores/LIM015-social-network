@@ -7,14 +7,11 @@ export const logInWithGoogleClick = () => {
   logInWithGoogle()
     .then(() => {
       const user = firebase.auth().currentUser;
-      console.log(user);
-      console.log('logueado con google');
       window.location.hash = '#/Home';
       messageError.innerHTML = '';
     })
     .catch((error) => {
       // Manejar errores aquí.
-      console.log('error');
       const errorCode = error.code;
       const errorMessage = error.message;
       // El correo electrónico de la cuenta del usuario utilizada.
@@ -24,16 +21,13 @@ export const logInWithGoogleClick = () => {
 
 export const observadorWatcher = () => {
   firebase.auth().onAuthStateChanged((user) => {
-    console.log({ user });
     let photo;
     let name;
     if (user !== null) {
       name = user.displayName;
       photo = user.photoURL;
-      console.log(name, photo);
       // menuNavegacionHome(displayName, photoURL);
     } else {
-      console.log('hola');
       window.location.hash = '#/LogIn';
     }
   });
@@ -43,10 +37,8 @@ export const observadorWatcher = () => {
 export const logOutClick = () => {
   logOut()
     .then(() => {
-      console.log('sesion cerrada');
       window.location.hash = '#/LogIn';
     })
     .catch((err) => {
-      console.log('Error logout', err);
     });
 };
