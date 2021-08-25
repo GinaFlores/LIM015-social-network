@@ -22,9 +22,9 @@ body {
 }
 
 .imageLogo {
-    width: 200px;
-    height: 80px;
-    padding: 0 40px;
+    width: 130px;
+    height: 87.5px;
+    padding: 0 20px;
 }
 
 .navMenu {
@@ -65,7 +65,6 @@ body {
 .containerHome {
     top: 7rem;
 }
-
 
 @media (max-width: 767px) {
     .navMenu {
