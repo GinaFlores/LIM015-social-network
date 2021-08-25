@@ -61,7 +61,6 @@ textarea {
 }
 .datoProfile {
     display: flex;
-    justify-content: center;
 }
 .datoProfile h4 {
     padding-left: 0.4rem;
@@ -71,6 +70,7 @@ textarea {
 }
 .postProfile {
     margin: 0 25%;
+    padding: 20px;
 }
 @media (min-width: 830px) {
     .datoProfile {

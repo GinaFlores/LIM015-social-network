@@ -1,7 +1,5 @@
 // Aqui todas las funciones que involucran FIREBASE AUTH
 
-// Iniciar sesion con cuenta registrada
-
 //  Registro con correo y contraseña
 export const registerWithEmail = (email, password) => firebase.auth()
   .createUserWithEmailAndPassword(email, password);
