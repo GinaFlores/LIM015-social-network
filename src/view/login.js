@@ -1,4 +1,4 @@
-import { logInWithGoogleClick, observadorWatcher } from '../lib/index.js';
+import { logInWithGoogleClick } from '../lib/index.js';
 import { logInWithEmail } from '../firebase/firebaseAuth.js';
 
 export const logInTemplate = () => {
@@ -83,6 +83,10 @@ export const logInTemplate = () => {
   const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
   btnGoogle.addEventListener('click', (logInWithGoogleClick));
 
-  observadorWatcher();
+  const btnRegister = sectionLogIn.querySelector('#linkRegister');
+  btnRegister.addEventListener('click', () => {
+    window.location.hash = '#/Register';
+  });
+
   return sectionLogIn;
 };
