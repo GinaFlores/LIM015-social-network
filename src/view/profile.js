@@ -1,3 +1,6 @@
+import { currentUser } from '../firebase/firebaseAuth.js';
+import { postCollection } from '../firebase/firebaseStore.js';
+
 export const profile = () => {
   const sectionProfile = document.createElement('section');
   sectionProfile.classList.add('profile');
@@ -17,7 +20,7 @@ export const profile = () => {
       <div id="photoProfile" class="imgPost"></div>
       <div class="post">
         <div class="postGroup">
-          <textarea id="content" class="content" cols="30" roes="5" placeholder="¿Cuál es tu próximo destino?" required></textarea>
+          <textarea id="contentPost" class="content" cols="30" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
         </div>
         <button id="postButton" type="submit"class="postButton">Publicar</button>
       </div>
@@ -43,17 +46,27 @@ export const profile = () => {
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
+  const btnPost = sectionProfile.querySelector('#postButton');
 
-  /* const auth = firebase.auth();
-  const sigOutFunction = () => {
-    auth.sigOut()
-      .then(() => {
-        window.location.assign('#/LogIn');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }; */
+  // funcion para agregar post
+  const writePost = (event) => {
+    event.preventDefault();
+    const post = document.getElementById('contentPost').value;
+    const user = currentUser();
+    const photo = currentUser().photoURL;
+    if (post !== '') {
+      postCollection(user.email, user.displayName, user.uid, post, photo)
+        .then(() => {
+          document.getElementById('contentPost').value = '';
+          console.log('agregando post');
+        }).catch((error) => {
+          console.log('no se agregó post', error);
+        });
+    } else {
+      alert('Ingrese su post');
+    }
+  };
+  btnPost.addEventListener('click', writePost);
 
   return sectionProfile;
 };
