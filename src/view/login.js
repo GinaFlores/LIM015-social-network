@@ -50,10 +50,8 @@ export const logInTemplate = () => {
       errorLogInEmail.innerHTML = '';
       errorLogInPassword.innerHTML = '';
     } else {
-      console.log({ emailLogIn, passwordLogIn });
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
-          console.log({ userCredential });
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
           } else {

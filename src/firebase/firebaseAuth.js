@@ -25,7 +25,7 @@ export const emailVerication = () => (
 export const logOut = () => firebase.auth().signOut();
 
 // Propiedad que usuario esta activo
-/* export const currentUser = () => firebase.auth().currentUser; */
+export const currentUser = () => firebase.auth().currentUser;
 
 // Cambiar contraseña
 /* export const changePasword = (email) => (

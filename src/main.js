@@ -16,7 +16,6 @@ const initialize = () => {
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => {
     changeView(window.location.hash);
-    /* observadorWatcher(); */
   });
 };
 window.addEventListener('load', initialize);
