@@ -32,7 +32,7 @@ export const profile = () => {
       <div class="postMessage">
         <div>
           <p>Post by<span id="userNamePost"></span></p>
-          <span id="closeItem"><i class="fasfa-trash"></i></span>
+          <span id="closeItem"><i class="fas fa-trash"></i></span>
         </div>
       <div id="postContent"></div>
       <div id="reactionPost">
