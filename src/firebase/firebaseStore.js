@@ -9,13 +9,10 @@ export const postCollection = (email, user, id, post, photo) => firebase.firesto
 });
 
 // obteniendo posts
-export const catchPosts = () => {
+/* export const catchPosts = () => {
   const seePosts = firebase.firestore().collection('posts').orderBy('time', 'desc').get();
   return seePosts;
 };
+*/
 
-// obteniendo las publicaciones actualizadas
-export const actualPosts = (callback) => {
-  const getActualPosts = firebase.firestore().collection('posts').onSnapshot(callback);
-  return getActualPosts;
-};
+// funcion del observador en tiempo de las publicaciones

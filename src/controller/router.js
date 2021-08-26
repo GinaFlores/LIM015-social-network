@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/named
+
 /* import { catchPost } from '../firebase/firebaseStore.js'; */
 import { components } from '../view/allTemplate.js';
 import { navigator } from '../view/home.js';
