@@ -37,6 +37,8 @@ export const profile = () => {
 
   // Mostrar nombre de usuaria
   if (localStorage.getItem('userName') === null) {
+    nameUser.textContent = localStorage.getItem('userEmail');
+  } else {
     nameUser.textContent = localStorage.getItem('userName');
   }
 
@@ -90,7 +92,6 @@ export const profile = () => {
       postContainer.innerHTML = '';
       querySnapshot.forEach((doc) => {
         const uidUser = localStorage.getItem('uid');
-        // eslint-disable-next-line no-constant-condition
         if (uidUser =!null) {
           postContainer.innerHTML += `
           <div class="postProfile" data-idpost='${doc.id}'>
@@ -118,14 +119,16 @@ export const profile = () => {
     });
   };
   */
-  const getPosts = (callback) => {
+  /* const getPosts = () => {
     firebase.firestore().collection('posts').get();
-    console.log(callback);
+    console.log(getPosts);
   };
+
   btnPost.addEventListener('click', async (e) => {
-    const posts = await getPosts();
-    console.log(posts);
+    e.preventDefault();
+
+    await writePosts();
     console.log('hola');
-  });
+  }); */
   return sectionProfile;
 };
