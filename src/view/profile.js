@@ -1,5 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection/* , catchPosts, actualPosts */ } from '../firebase/firebaseStore.js';
+import { postCollection /* actualPosts */ } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -49,7 +49,7 @@ export const profile = () => {
           <h4 id="userName">Gigi Gonzales</h4>
           <span id="time">1 min.</span>
         </div>
-        <textarea cols="30" roes="5" placeholder="Hola chicas, mi próximo destino es Trujillo.💖😎✈"></textarea>
+        <textarea id="postContentText" cols="30" roes="5"></textarea>
       </div>
       <span id="closeItem"><i class="fas fa-trash"></i></span>
       <div id="postContent"></div>
@@ -81,48 +81,51 @@ export const profile = () => {
     }
   };
   btnPost.addEventListener('click', writePost);
-  return sectionProfile;
+
+  // funcion para que se visualicen las publicaciones
   /*
-  // funcion para visualizar los posts
-  actualPosts(() => {
-    containerPosts.innerHTML = '';
-    // SNAPSHOT
-    catchPosts().then((docRef) => {
-      docRef.forEach((docAboutCollection) => {
-        const idPost = docAboutCollection.ref.id;
-        const existPost = docAboutCollection.exists;
-        const pathPost = docAboutCollection.ref.path;
-        const postInfo = docAboutCollection.data();
-        // console.log(docAboutCollection);
-        // console.log(idPost, existPost, pathPost);
-        // console.log(docAboutCollection);
-        // console.log(postInfo);
-        // console.log(postInfo.post);
-        containerPosts.innerHTML += `<section class='postMessage'>
-          <div class='authorPost' name='${postInfo.id}'>
-            <p>Publicado<span id='userNamePost' class='userNamePost' >${postInfo.mail}</span></p>
-            <button id='${idPost}' class='btnDelete'>&#10062;</button>
+  const getPosts = () => {
+    showPosts((querySnapshot) => {
+      const postContainer = sectionProfile.getElementById('postContentText');
+      postContainer.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        const uidUser = localStorage.getItem('uid');
+        // eslint-disable-next-line no-constant-condition
+        if (uidUser =!null) {
+          postContainer.innerHTML += `
+          <div class="postProfile" data-idpost='${doc.id}'>
+          <div class="profile">
+            <div class="datoProfile">
+              <div>
+              <img id="photoProfile" class="imgPost" src='${doc.data().photo}'>
+              </div>
+              <h4 id="userName">${doc.data().name}</h4>
+              <span id="time">${doc.data().day}</span>
+            </div>
+            // eslint-disable-next-line max-len
+            <textarea id="postContent-${doc.id}" cols="30" roes="5">${doc.data().post}</textarea>
           </div>
-          <div class='sectionAboutPost'>
-            <input name='${idPost}' disabled class='postContent' value='${postInfo.post}'>
-            <div>
-              <button id='${idPost}' class='btnEdit'>&#9997;</button>
-              <button id='${idPost}' class='btnSave'>&#9989;</button>
+          <span id="closeItem"><i class="fas fa-trash"></i></span>
+          <div id="postContent"></div>
+          <div id="reactionPost">
+          <span><i class="fas fa-heart"></i></span>
+          <span><i class="fas fa-edit"></i></span>
           </div>
-          </div>
-          <div id='reactionPost' class='reactionPost'>
-            <button id='${idPost}' class='btnLove'>&#x2764;&#xfe0f;</button>
-            <span name='${idPost}'>${postInfo.likes}</span>
-            <button id='${idPost}' class='btnDkislike'>&#128078;</button>
-            <button id='${idPost}' class='btnComments'>&#128172;</button>
-            <span>0</span>
-          </div>
-        </section>`;
+        </div>
+        `;
+        }
       });
-    })
-      .catch((error) => {
-        console.log(error);
-      });
+    });
+  };
+  */
+  const getPosts = (callback) => {
+    firebase.firestore().collection('posts').get();
+    console.log(callback);
+  };
+  btnPost.addEventListener('click', async (e) => {
+    const posts = await getPosts();
+    console.log(posts);
+    console.log('hola');
   });
-*/
+  return sectionProfile;
 };
