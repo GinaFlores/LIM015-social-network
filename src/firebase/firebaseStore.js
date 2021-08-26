@@ -9,19 +9,13 @@ export const postCollection = (email, user, id, post, photo) => firebase.firesto
 });
 
 // obteniendo posts
-export const catchPost = (callback) => firebase.firestore().collection('posts').orderBy('timePost', 'desc')
-  .onSnapshot((querySnapshot) => {
-    const postGetPost = [];
-    querySnapshot.forEach((doc) => {
-      postGetPost.push({ id: doc.id, ...doc.data() });
-    });
-    callback(postGetPost);
-  });
-/*
-// hora
-const actuallyhour = function(){
-  const date = new Date(),
-        hours = date.getHours();
+export const catchPosts = () => {
+  const seePosts = firebase.firestore().collection('posts').orderBy('time', 'desc').get();
+  return seePosts;
+};
 
-}
-*/
+// obteniendo las publicaciones actualizadas
+export const actualPosts = (callback) => {
+  const getActualPosts = firebase.firestore().collection('posts').onSnapshot(callback);
+  return getActualPosts;
+};
