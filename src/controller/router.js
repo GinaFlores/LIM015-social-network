@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/named
+
+/* import { catchPost } from '../firebase/firebaseStore.js'; */
 import { components } from '../view/allTemplate.js';
 import { navigator } from '../view/home.js';
 
@@ -18,6 +21,7 @@ export const changeView = (route) => {
     case '#/Profile':
       viewRoot.appendChild(navigator());
       viewRoot.appendChild(components.Profile());
+      /* catchPost(); */
       break;
     default: viewRoot.appendChild(components.Error404());
   }
