@@ -9,10 +9,13 @@ export const postCollection = (email, user, id, post, photo) => firebase.firesto
 });
 
 // obteniendo posts
-/* export const catchPosts = () => {
-  const seePosts = firebase.firestore().collection('posts').orderBy('time', 'desc').get();
-  return seePosts;
+export const getPosts = (callback) => {
+  firebase.firestore().collection('posts').orderBy('timePost', 'desc').onSnapshot((data) => {
+    const posts = [];
+    data.forEach((post) => {
+      // eslint-disable-next-line no-undef
+      posts.push({ id: post.id, ...post.data() });
+    });
+    callback(posts);
+  });
 };
-*/
-
-// funcion del observador en tiempo de las publicaciones

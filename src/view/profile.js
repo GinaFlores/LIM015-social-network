@@ -1,5 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection /* actualPosts */ } from '../firebase/firebaseStore.js';
+import { postCollection, getPosts } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -83,6 +83,14 @@ export const profile = () => {
   btnPost.addEventListener('click', writePost);
 
   // funcion para que se visualicen las publicaciones
+  getPosts(()=>{
+    
+  })
+    const postContainer = document.getElementById('containerPosts');
+    postContainer.innerHTML = '';
+    console.log(getPosts());
+  };
+
   /*
   const getPosts = () => {
     showPosts((querySnapshot) => {
@@ -118,11 +126,8 @@ export const profile = () => {
     });
   };
   */
-  const getPosts = (callback) => {
-    firebase.firestore().collection('posts').get();
-    console.log(callback);
-  };
   btnPost.addEventListener('click', async (e) => {
+    e.preventDefault();
     const posts = await getPosts();
     console.log(posts);
     console.log('hola');
