@@ -1,5 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection, catchPosts, actualPosts } from '../firebase/firebaseStore.js';
+import { postCollection/* , catchPosts, actualPosts */ } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -9,11 +9,11 @@ export const profile = () => {
   <div class="containerProfile">
     <div class="frontProfile"></div>
     <div class="container">
-      <div class="photoUser"></div>
+      <div><img src="../img/viajera1.png" alt="photoProfile" class="photoUser"></img></div>
     </div>
     <div class="details">
-      <h3>Gigi Gonzales</h3>
-      <p>Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
+      <h3 id="nameUser"></h3>
+      <p id"statu">Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
     </div>
     <!-- Escribir Publicación -->
     <div class="divPost">
@@ -29,10 +29,18 @@ export const profile = () => {
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
-  const btnPost = sectionProfile.querySelector('#postButton');
 
-  // añadiendo el template para los posts
-  const containerPosts = sectionProfile.querySelector('#containerPosts');
+  const btnPost = sectionProfile.querySelector('#postButton');
+  const nameUser = sectionProfile.querySelector('#nameUser');
+  /* const textContent = sectionProfile.querySelector('#contentPost'); */
+  const contentPosts = sectionProfile.querySelector('#containerPosts');
+
+  // Mostrar nombre de usuaria
+  if (localStorage.getItem('userName') === null) {
+    nameUser.textContent = localStorage.getItem('userName');
+  }
+
+  // Añadiendo el template para los posts
   const postTemplate = `
     <div class="postProfile">
       <div class="profile">
@@ -51,8 +59,8 @@ export const profile = () => {
       </div>
     </div>
   `;
-  containerPosts.innerHTML = postTemplate;
-  sectionProfile.appendChild(containerPosts);
+  contentPosts.innerHTML = postTemplate;
+  sectionProfile.appendChild(contentPosts);
 
   // funcion para agregar post
   const writePost = (event) => {
@@ -73,6 +81,7 @@ export const profile = () => {
     }
   };
   btnPost.addEventListener('click', writePost);
+  return sectionProfile;
   /*
   // funcion para visualizar los posts
   actualPosts(() => {
@@ -116,5 +125,4 @@ export const profile = () => {
       });
   });
 */
-  return sectionProfile;
 };
