@@ -1,5 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection } from '../firebase/firebaseStore.js';
+import { postCollection, getCollection } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -30,74 +30,68 @@ export const profile = () => {
   `;
   sectionProfile.innerHTML = templateProfile;
 
+  // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
   const nameUser = sectionProfile.querySelector('#nameUser');
-  /* const textContent = sectionProfile.querySelector('#contentPost'); */
+  const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
 
-  // Mostrar nombre de usuaria
+  // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('userEmail');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }
 
-  // Añadiendo el template para los posts
-  const postTemplate = `
-    <div class="postProfile">
-      <div class="profile">
-        <div class="datoProfile">
-          <div id="photoProfile" class="imgPost"></div>
-          <h4 id="userName">Gigi Gonzales</h4>
-          <span id="time">1 min.</span>
-        </div>
-        <textarea id="postContentText" cols="30" roes="5"></textarea>
-      </div>
-      <span id="closeItem"><i class="fas fa-trash"></i></span>
-      <div id="postContent"></div>
-      <div id="reactionPost">
-      <span><i class="fas fa-heart"></i></span>
-      <span><i class="fas fa-edit"></i></span>
-      </div>
-    </div>
-  `;
-  contentPosts.innerHTML = postTemplate;
-  sectionProfile.appendChild(contentPosts);
+  // funcion para agregar post
+  const writePost = (event) => {
+    event.preventDefault();
+    const post = document.getElementById('contentPost').value;
+    const user = currentUser();
+    const photo = currentUser().photoURL;
+    if (post !== '') {
+      postCollection(user.email, user.displayName, user.uid, post, photo)
+        .then(() => {
+          document.getElementById('contentPost').value = '';
+          console.log('agregando post');
+        }).catch((error) => {
+          console.log('no se agregó post', error);
+        });
+    } else {
+      alert('Ingrese su post');
+    }
+    console.log(user.email, user.displayName, user.uid, post, photo);
+  };
+  btnPost.addEventListener('click', writePost);
 
-  /*
-  const getPosts = () => {
-    showPosts((querySnapshot) => {
-      const postContainer = sectionProfile.getElementById('postContentText');
-      postContainer.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        const uidUser = localStorage.getItem('uid');
-        if (uidUser =!null) {
-          postContainer.innerHTML += `
-          <div class="postProfile" data-idpost='${doc.id}'>
+  // funcion de mostrar publicaciones
+  getCollection()
+    .then((doc) => {
+      doc.forEach((element) => {
+        contentPosts.innerHTML += `
+        <div class="postProfile">
           <div class="profile">
             <div class="datoProfile">
-              <div>
-              <img id="photoProfile" class="imgPost" src='${doc.data().photo}'>
-              </div>
-              <h4 id="userName">${doc.data().name}</h4>
-              <span id="time">${doc.data().day}</span>
+              <div id="photoProfile" class="imgPost"></div>
+              <h4 id="userName"></h4>
+              <span id="time">${doc.data().timePost}</span>
             </div>
-            // eslint-disable-next-line max-len
-            <textarea id="postContent-${doc.id}" cols="30" roes="5">${doc.data().post}</textarea>
+            <textarea id="postContentText" cols="30" roes="5"></textarea>
           </div>
           <span id="closeItem"><i class="fas fa-trash"></i></span>
-          <div id="postContent"></div>
+          <div id="postContent">${doc.data().texto}</div>
           <div id="reactionPost">
           <span><i class="fas fa-heart"></i></span>
           <span><i class="fas fa-edit"></i></span>
           </div>
         </div>
         `;
-        }
+        console.log(element.data());
       });
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  };
-  */
 
   return sectionProfile;
 };
