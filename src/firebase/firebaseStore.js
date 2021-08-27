@@ -1,18 +1,12 @@
 // añadiendo documentos a nuestra coleccion de firestore llamadas posts
-export const postCollection = (email, user, id, post, photo) => firebase.firestore().collection('posts').add({
+export const postCollection = (email, nameUser, id, post, photo) => firebase.firestore().collection('posts').add({
   correo: email,
-  usuario: user,
+  usuario: nameUser,
   identificador: id,
   texto: post,
   foto: photo,
-  timePost: new Date(),
+  timePost: firebase.firestore.Timestamp.fromDate(new Date()),
 });
 
-// obteniendo posts
-/* export const catchPosts = () => {
-  const seePosts = firebase.firestore().collection('posts').orderBy('time', 'desc').get();
-  return seePosts;
-};
-*/
-
-// funcion del observador en tiempo de las publicaciones
+// obteniendo posts de forma descendente
+export const getCollection = () => firebase.firestore().collection('posts').orderBy('timePost', 'desc').get();

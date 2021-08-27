@@ -19,6 +19,25 @@ export const logInWithGoogleClick = () => {
     });
 };
 
+// funcion para agregar post
+export const writePost = (event) => {
+  event.preventDefault();
+  const post = document.getElementById('contentPost').value;
+  const user = currentUser();
+  const photo = currentUser().photoURL;
+  if (post !== '') {
+    postCollection(user.email, user.displayName, user.uid, post, photo)
+      .then(() => {
+        document.getElementById('contentPost').value = '';
+        console.log('agregando post');
+      }).catch((error) => {
+        console.log('no se agregó post', error);
+      });
+  } else {
+    alert('Ingrese su post');
+  }
+};
+
 export const observadorWatcher = () => {
   firebase.auth().onAuthStateChanged((user) => {
     let photo;
