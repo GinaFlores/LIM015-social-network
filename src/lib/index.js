@@ -7,8 +7,10 @@ export const logInWithGoogleClick = () => {
   logInWithGoogle()
     .then(() => {
       const user = firebase.auth().currentUser;
-      window.location.hash = '#/Home';
-      messageError.innerHTML = '';
+      if (user != null) {
+        window.location.hash = '#/Home';
+        messageError.innerHTML = '';
+      }
     })
     .catch((error) => {
       // Manejar errores aquí.
@@ -45,6 +47,7 @@ export const observadorWatcher = () => {
     if (user !== null) {
       name = user.displayName;
       photo = user.photoURL;
+      console.log(user);
       // menuNavegacionHome(displayName, photoURL);
     } else {
       window.location.hash = '#/LogIn';

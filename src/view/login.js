@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { logInWithGoogleClick } from '../lib/index.js';
 import { logInWithEmail } from '../firebase/firebaseAuth.js';
 
@@ -54,6 +55,7 @@ export const logInTemplate = () => {
         .then((userCredential) => {
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
+            console.log(userCredential);
           } else {
             localStorage.setItem('userName', userCredential.user.displayName);
           }
@@ -83,6 +85,7 @@ export const logInTemplate = () => {
   const btnGoogle = sectionLogIn.querySelector('#btnGoogle');
   btnGoogle.addEventListener('click', (logInWithGoogleClick));
 
+  // Vista de login a register
   const btnRegister = sectionLogIn.querySelector('#linkRegister');
   btnRegister.addEventListener('click', () => {
     window.location.hash = '#/Register';
