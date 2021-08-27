@@ -1,5 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection /* actualPosts */ } from '../firebase/firebaseStore.js';
+import { postCollection } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -36,7 +36,7 @@ export const profile = () => {
   const contentPosts = sectionProfile.querySelector('#containerPosts');
 
   // Mostrar nombre de usuaria
-  if (localStorage.getItem('userName') === null) {
+  if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('userEmail');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
@@ -64,27 +64,6 @@ export const profile = () => {
   contentPosts.innerHTML = postTemplate;
   sectionProfile.appendChild(contentPosts);
 
-  // funcion para agregar post
-  const writePost = (event) => {
-    event.preventDefault();
-    const post = document.getElementById('contentPost').value;
-    const user = currentUser();
-    const photo = currentUser().photoURL;
-    if (post !== '') {
-      postCollection(user.email, user.displayName, user.uid, post, photo)
-        .then(() => {
-          document.getElementById('contentPost').value = '';
-          console.log('agregando post');
-        }).catch((error) => {
-          console.log('no se agregó post', error);
-        });
-    } else {
-      alert('Ingrese su post');
-    }
-  };
-  btnPost.addEventListener('click', writePost);
-
-  // funcion para que se visualicen las publicaciones
   /*
   const getPosts = () => {
     showPosts((querySnapshot) => {
@@ -119,16 +98,6 @@ export const profile = () => {
     });
   };
   */
-  /* const getPosts = () => {
-    firebase.firestore().collection('posts').get();
-    console.log(getPosts);
-  };
 
-  btnPost.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-    await writePosts();
-    console.log('hola');
-  }); */
   return sectionProfile;
 };
