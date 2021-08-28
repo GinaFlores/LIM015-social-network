@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { logInWithGoogle, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
+import { logInWithGoogle, currentUser, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
+import { postCollection } from '../firebase/firebaseStore.js';
 
 // inicio de sesion con google
 export const logInWithGoogleClick = () => {
