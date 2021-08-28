@@ -53,9 +53,10 @@ export const logInTemplate = () => {
     } else {
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
-          if (userCredential.user.displayName === null) {
+          // eslint-disable-next-line max-len
+          if (userCredential.user.displayName === null || userCredential.user.emailVerified === false) {
+            alert('No has verificado tu correo electrónico');
             localStorage.getItem('userName');
-            console.log(userCredential);
           } else {
             localStorage.setItem('userName', userCredential.user.displayName);
           }
