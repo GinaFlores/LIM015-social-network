@@ -46,13 +46,13 @@ export const profile = () => {
   // funcion para agregar post
   const writePost = (event) => {
     event.preventDefault();
-    const post = document.getElementById('contentPost').value;
+    const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
-    if (post !== '') {
+    if (textContent.value !== '') {
       postCollection(user.email, user.displayName, user.uid, post, photo)
         .then(() => {
-          document.getElementById('contentPost').value = '';
+          /* sectionProfile.getElementById('contentPost').value = ''; */
           console.log('agregando post');
         }).catch((error) => {
           console.log('no se agregó post', error);
@@ -65,33 +65,34 @@ export const profile = () => {
   btnPost.addEventListener('click', writePost);
 
   // funcion de mostrar publicaciones
-  getCollection()
-    .then((doc) => {
-      doc.forEach((element) => {
+  const getPosts = () => {
+    getCollection().onSnapshot((collection) => {
+      contentPosts.innerHTML = '';
+      collection.forEach((element) => {
+        /* console.log(element.data()); */
+        const dataContent = element.data();
         contentPosts.innerHTML += `
-        <div class="postProfile">
-          <div class="profile">
-            <div class="datoProfile">
-              <div id="photoProfile" class="imgPost"></div>
-              <h4 id="userName"></h4>
-              <span id="time">${doc.data().timePost}</span>
+          <div class="postProfile">
+            <div class="profile">
+              <div class="datoProfile">
+                <div id="photoProfile" class="imgPost"></div>
+                <h4 id="userName"></h4>
+                <span id="time">${dataContent.timePost}</span>
+              </div>
             </div>
-            <textarea id="postContentText" cols="30" roes="5"></textarea>
+            <span id="closeItem"><i class="fas fa-trash"></i></span>
+            <p id="postContent">${dataContent.texto}</p>
+            <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
+            <div id="reactionPost">
+            <span><i class="fas fa-heart"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+            </div>
           </div>
-          <span id="closeItem"><i class="fas fa-trash"></i></span>
-          <div id="postContent">${doc.data().texto}</div>
-          <div id="reactionPost">
-          <span><i class="fas fa-heart"></i></span>
-          <span><i class="fas fa-edit"></i></span>
-          </div>
-        </div>
-        `;
-        console.log(element.data());
+          `;
       });
-    })
-    .catch((error) => {
-      console.log(error);
     });
+  };
+  getPosts();
 
   return sectionProfile;
 };
