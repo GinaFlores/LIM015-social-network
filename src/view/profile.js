@@ -79,7 +79,7 @@ export const profile = () => {
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
-                <p id="userName">Gina Flores</p>
+                <p id="userName">${dataContent.usuario}</p>
                 <span id="time">fecha</span>
               </div>
             </div>
