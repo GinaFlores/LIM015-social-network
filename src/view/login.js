@@ -55,7 +55,6 @@ export const logInTemplate = () => {
         .then((userCredential) => {
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
-            console.log(userCredential);
           } else {
             localStorage.setItem('userName', userCredential.user.displayName);
           }
