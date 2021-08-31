@@ -53,7 +53,7 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     if (textContent.value !== '') {
-      postCollection(user.email, user.displayName, user.uid, post, photo)
+      postCollection(user.displayName, user.email, user.uid, post, photo)
         .then(() => {
           textContent.value = '';
           console.log('agregando post');
@@ -63,7 +63,7 @@ export const profile = () => {
     } else {
       alert('Ingrese su post');
     }
-    console.log(user.email, user.displayName, user.uid, post, photo);
+    console.log(user.displayName, user.email, user.uid, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
@@ -80,7 +80,7 @@ export const profile = () => {
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
                 <p id="userName">${dataContent.usuario}</p>
-                <span id="time">fecha</span>
+                <span id="time">${dataContent.timePost.toDate()}</span>
               </div>
             </div>
             <p class="postText" id="postContent">${dataContent.texto}</p>
