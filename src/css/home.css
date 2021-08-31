@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: Rubik,Arial,sans-serif
 }
 
 .header {
@@ -22,9 +22,9 @@ body {
 }
 
 .imageLogo {
-    width: 130px;
-    height: 87.5px;
-    padding: 0 20px;
+    width: 160px;
+    /* height: 87.5px; */
+    padding: 14px 20px;
 }
 
 .navMenu {

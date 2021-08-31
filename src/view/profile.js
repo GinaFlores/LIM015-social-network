@@ -9,23 +9,25 @@ export const profile = () => {
   <div class="containerProfile">
     <div class="frontProfile"></div>
     <div class="container">
-      <div><img src="../img/viajera1.png" alt="photoProfile" class="photoUser"></img></div>
+      <div><img src="../img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
     </div>
     <div class="details">
       <h3 id="nameUser"></h3>
       <p id"statu">Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
     </div>
     <!-- Escribir Publicación -->
-    <div class="divPost">
-      <div id="photoProfile" class="imgPost"></div>
-      <div class="post">
-        <div class="postGroup">
-          <textarea id="contentPost" class="content" cols="30" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
+    <div class="writePostContainer">
+      <div class="divPost">
+        <img src="../img/viajera1.png" class="imgPost"></img>
+        <div class="post">
+          <div class="postGroup">
+            <textarea id="contentPost" cols="35" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
+          </div>
+          <button id="postButton" type="submit"class="postButton">Publicar</button>
         </div>
-        <button id="postButton" type="submit"class="postButton">Publicar</button>
       </div>
+      <div id="containerPosts"></div>
     </div>
-    <div id="containerPosts"></div>
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
@@ -46,13 +48,14 @@ export const profile = () => {
   // funcion para agregar post
   const writePost = (event) => {
     event.preventDefault();
+    textContent.innerHTML = '';
     const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
     if (textContent.value !== '') {
       postCollection(user.email, user.displayName, user.uid, post, photo)
         .then(() => {
-          /* sectionProfile.getElementById('contentPost').value = ''; */
+          textContent.value = '';
           console.log('agregando post');
         }).catch((error) => {
           console.log('no se agregó post', error);
@@ -62,7 +65,7 @@ export const profile = () => {
     }
     console.log(user.email, user.displayName, user.uid, post, photo);
   };
-  btnPost.addEventListener('click', writePost);
+  btnPost.addEventListener('click', (writePost));
 
   // funcion de mostrar publicaciones
   const getPosts = () => {
@@ -73,19 +76,19 @@ export const profile = () => {
         const dataContent = element.data();
         contentPosts.innerHTML += `
           <div class="postProfile">
-            <div class="profile">
-              <div class="datoProfile">
-                <div id="photoProfile" class="imgPost"></div>
-                <h4 id="userName"></h4>
-                <span id="time">${dataContent.timePost}</span>
+            <div class="datoProfile">
+              <img src="../img/viajera1.png" class="imgPost"></img>
+              <div class="datoName">
+                <p id="userName">Gina Flores</p>
+                <span id="time">fecha</span>
               </div>
             </div>
-            <span id="closeItem"><i class="fas fa-trash"></i></span>
-            <p id="postContent">${dataContent.texto}</p>
+            <p class="postText" id="postContent">${dataContent.texto}</p>
             <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
-            <div id="reactionPost">
-            <span><i class="fas fa-heart"></i></span>
-            <span><i class="fas fa-edit"></i></span>
+            <div class="reactionPost" id="reactionPost">
+              <div><span><i class="fas fa-heart"></i></span></div>
+              <div><span><i class="fas fa-edit"></i></span></div>
+              <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
             </div>
           </div>
           `;
