@@ -74,24 +74,31 @@ export const profile = () => {
       collection.forEach((element) => {
         /* console.log(element.data()); */
         const dataContent = element.data();
+        console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
                 <p id="userName">${dataContent.usuario}</p>
-                <span id="time">${dataContent.timePost.toDate()}</span>
+                <span id="time">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
             <p class="postText" id="postContent">${dataContent.texto}</p>
             <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
             <div class="reactionPost" id="reactionPost">
               <div><span><i class="fas fa-heart"></i></span></div>
-              <div><span><i class="fas fa-edit"></i></span></div>
+              <div><span><i class="fas fa-edit btnEdit dataId="${dataContent.identificador}"></i></span></div>
               <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
             </div>
           </div>
           `;
+        const btnEdit = document.querySelectorAll('.btnEdit');
+        btnEdit.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            console.log(e.target.dataset.uid);
+          });
+        });
       });
     });
   };

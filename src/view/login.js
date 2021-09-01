@@ -91,23 +91,4 @@ export const logInTemplate = () => {
   });
 
   return sectionLogIn;
-
-  /* const loginUser = (email, password) => {
-    firebase
-    .auth()
-    .sigInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      console.log(userCredential);
-    })
-    .catch((error) => {
-      console.log('error', error);
-    });
-  };
-  */
 };
-
-/* if (firebase.auth().currentUser === null) {
-  window.location.hash = '#/LogIn';
-  const sesionActivaGoogle = false;
-  console.log('sesion activa', sesionActivaGoogle);
-} */
