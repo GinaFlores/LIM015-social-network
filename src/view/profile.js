@@ -68,12 +68,7 @@ export const profile = () => {
       // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
-<<<<<<< HEAD
-    // eslint-disable-next-line no-console
-    console.log(user.email, user.displayName, user.uid, post, photo);
-=======
     console.log(showName, user.email, user.uid, post, photo);
->>>>>>> upstream/main
   };
   btnPost.addEventListener('click', (writePost));
 
