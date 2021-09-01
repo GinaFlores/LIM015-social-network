@@ -52,10 +52,10 @@ export const profile = () => {
     const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
-    const seeName = user.displayName || localStorage.getItem('nameRegister');
-    console.log(seeName);
+    const showName = user.displayName || localStorage.getItem('nameRegister');
+    console.log(showName);
     if (textContent.value !== '') {
-      postCollection(seeName, user.email, user.uid, post, photo)
+      postCollection(showName, user.email, user.uid, post, photo)
         .then(() => {
           textContent.value = '';
           console.log('agregando post');
@@ -65,7 +65,7 @@ export const profile = () => {
     } else {
       alert('Ingrese su post');
     }
-    console.log(seeName, user.email, user.uid, post, photo);
+    console.log(showName, user.email, user.uid, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
