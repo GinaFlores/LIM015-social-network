@@ -16,3 +16,6 @@ export const getCollection = () => firebase.firestore().collection('posts').orde
 /* const date = new Date();
   const datePost = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
 */
+
+// Realizando la función de delete
+export const deletePost = () => firebase.firestore().collection('posts').doc().delete();

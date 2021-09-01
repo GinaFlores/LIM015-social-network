@@ -56,13 +56,17 @@ export const profile = () => {
       postCollection(user.email, user.displayName, user.uid, post, photo)
         .then(() => {
           textContent.value = '';
+          // eslint-disable-next-line no-console
           console.log('agregando post');
         }).catch((error) => {
+          // eslint-disable-next-line no-console
           console.log('no se agregó post', error);
         });
     } else {
+      // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
+    // eslint-disable-next-line no-console
     console.log(user.email, user.displayName, user.uid, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
@@ -98,4 +102,18 @@ export const profile = () => {
   getPosts();
 
   return sectionProfile;
+};
+
+// Funcion para eliminar publicacciones
+export const removePost = (deletePost, postId) => {
+  // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line no-alert
+  // eslint-disable-next-line no-restricted-globals
+  const optionDelete = confirm('¿Estás seguro de querer eliminar el post?');
+  if (optionDelete === true) {
+    deletePost(postId).then(() => {
+      // eslint-disable-next-line no-console
+      console.log(`post${postId}borrado con exito`);
+    });
+  }
 };
