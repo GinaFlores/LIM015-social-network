@@ -40,7 +40,7 @@ export const profile = () => {
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
-    nameUser.textContent = localStorage.getItem('userEmail');
+    nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }
@@ -52,8 +52,10 @@ export const profile = () => {
     const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
+    const showName = user.displayName || localStorage.getItem('nameRegister');
+    console.log(showName);
     if (textContent.value !== '') {
-      postCollection(user.email, user.displayName, user.uid, post, photo)
+      postCollection(showName, user.email, user.uid, post, photo)
         .then(() => {
           textContent.value = '';
           // eslint-disable-next-line no-console
@@ -66,8 +68,12 @@ export const profile = () => {
       // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
+<<<<<<< HEAD
     // eslint-disable-next-line no-console
     console.log(user.email, user.displayName, user.uid, post, photo);
+=======
+    console.log(showName, user.email, user.uid, post, photo);
+>>>>>>> upstream/main
   };
   btnPost.addEventListener('click', (writePost));
 
@@ -76,26 +82,34 @@ export const profile = () => {
     getCollection().onSnapshot((collection) => {
       contentPosts.innerHTML = '';
       collection.forEach((element) => {
-        /* console.log(element.data()); */
+        // console.log(element.data());
         const dataContent = element.data();
+        console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
-                <p id="userName">Gina Flores</p>
-                <span id="time">fecha</span>
+                <p id="userName">${dataContent.usuario}</p>
+                <span id="time">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
             <p class="postText" id="postContent">${dataContent.texto}</p>
             <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
             <div class="reactionPost" id="reactionPost">
+              <div id="likesContent"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
-              <div><span><i class="fas fa-edit"></i></span></div>
+              <div><span><i class="fas fa-edit btnEdit dataId="${dataContent.identificador}"></i></span></div>
               <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
             </div>
           </div>
           `;
+        const btnEdit = document.querySelectorAll('.btnEdit');
+        btnEdit.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            console.log(e.target.dataset.uid);
+          });
+        });
       });
     });
   };

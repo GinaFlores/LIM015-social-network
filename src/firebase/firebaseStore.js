@@ -7,11 +7,13 @@ export const postCollection = (nameUser, email, id, post, photo) => firebase.fir
   texto: post,
   foto: photo,
   timePost: firebase.firestore.Timestamp.fromDate(new Date()),
+  like: 0,
 });
 
 // obteniendo posts de forma descendente
 export const getCollection = () => firebase.firestore().collection('posts').orderBy('timePost', 'desc');
 
+<<<<<<< HEAD
 // Declaracion para fecha
 /* const date = new Date();
   const datePost = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -19,3 +21,6 @@ export const getCollection = () => firebase.firestore().collection('posts').orde
 
 // Realizando la función de delete
 export const deletePost = () => firebase.firestore().collection('posts').doc().delete();
+=======
+export const getPostForEdit = (id) => firebase.firestore().collection('posts').doc(id).get();
+>>>>>>> upstream/main
