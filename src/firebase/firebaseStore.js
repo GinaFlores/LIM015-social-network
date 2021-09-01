@@ -7,6 +7,7 @@ export const postCollection = (nameUser, email, id, post, photo) => firebase.fir
   texto: post,
   foto: photo,
   timePost: firebase.firestore.Timestamp.fromDate(new Date()),
+  like: 0,
 });
 
 // obteniendo posts de forma descendente
