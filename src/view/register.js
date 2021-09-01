@@ -61,6 +61,7 @@ export const registerTemplate = () => {
         .then(() => {
           emailVerication();
           window.alert('mensaje de verificacion enviado');
+          localStorage.setItem('nameRegister', nameUser);
           window.location.hash = '#/LogIn';
         }).catch((err) => {
           const errorCode = err.code;

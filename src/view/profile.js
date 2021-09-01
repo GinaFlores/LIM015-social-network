@@ -40,7 +40,7 @@ export const profile = () => {
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
-    nameUser.textContent = localStorage.getItem('userEmail');
+    nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }
@@ -52,8 +52,10 @@ export const profile = () => {
     const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
+    const seeName = user.displayName || localStorage.getItem('nameRegister');
+    console.log(seeName);
     if (textContent.value !== '') {
-      postCollection(user.displayName, user.email, user.uid, post, photo)
+      postCollection(seeName, user.email, user.uid, post, photo)
         .then(() => {
           textContent.value = '';
           console.log('agregando post');
@@ -63,7 +65,7 @@ export const profile = () => {
     } else {
       alert('Ingrese su post');
     }
-    console.log(user.displayName, user.email, user.uid, post, photo);
+    console.log(seeName, user.email, user.uid, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
@@ -72,7 +74,7 @@ export const profile = () => {
     getCollection().onSnapshot((collection) => {
       contentPosts.innerHTML = '';
       collection.forEach((element) => {
-        /* console.log(element.data()); */
+        // console.log(element.data());
         const dataContent = element.data();
         contentPosts.innerHTML += `
           <div class="postProfile">
@@ -86,6 +88,7 @@ export const profile = () => {
             <p class="postText" id="postContent">${dataContent.texto}</p>
             <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
             <div class="reactionPost" id="reactionPost">
+              <div id="likesContent"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
               <div><span><i class="fas fa-edit"></i></span></div>
               <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
