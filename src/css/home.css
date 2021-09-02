@@ -63,7 +63,7 @@ body {
 }
 
 .containerHome {
-    top: 7rem;
+    padding-top: 12rem;;
 }
 
 @media (max-width: 767px) {

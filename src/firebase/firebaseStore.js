@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 // añadiendo documentos a nuestra coleccion de firestore llamadas posts
-export const postCollection = (nameUser, email, id, post, photo) => firebase.firestore().collection('posts').add({
+export const postCollection = (nameUser, email, post, photo) => firebase.firestore().collection('posts').add({
   usuario: nameUser,
   correo: email,
-  identificador: id,
   texto: post,
   foto: photo,
   timePost: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -20,4 +19,5 @@ export const getCollection = () => firebase.firestore().collection('posts').orde
 
 // Realizando la función de delete
 export const deletePost = () => firebase.firestore().collection('posts').doc().delete();
-export const getPostForEdit = (id) => firebase.firestore().collection('posts').doc(id).get();
+// Realizando función Editar
+export const getPostEdit = (id) => firebase.firestore().collection('posts').doc(id).get();

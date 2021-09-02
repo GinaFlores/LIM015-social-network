@@ -1,6 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-// eslint-disable-next-line import/named
-import { postCollection, getCollection } from '../firebase/firebaseStore.js';
+import { postCollection, getCollection, getPostEdit } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -57,7 +56,7 @@ export const profile = () => {
     // eslint-disable-next-line no-console
     console.log(showName);
     if (textContent.value !== '') {
-      postCollection(showName, user.email, user.uid, post, photo)
+      postCollection(showName, user.email, post, photo)
         .then(() => {
           textContent.value = '';
           // eslint-disable-next-line no-console
@@ -70,8 +69,7 @@ export const profile = () => {
       // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
-    // eslint-disable-next-line no-console
-    console.log(showName, user.email, user.uid, post, photo);
+    console.log(showName, user.email, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
@@ -79,10 +77,9 @@ export const profile = () => {
   const getPosts = () => {
     getCollection().onSnapshot((collection) => {
       contentPosts.innerHTML = '';
-      collection.forEach((element) => {
+      collection.forEach((doc) => {
         // console.log(element.data());
-        const dataContent = element.data();
-        // eslint-disable-next-line no-console
+        const dataContent = doc.data();
         console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
@@ -93,12 +90,11 @@ export const profile = () => {
                 <span id="time">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
-            <p class="postText" id="postContent">${dataContent.texto}</p>
-            <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
+            <textarea class="textEdit" id="postContentText" cols="30" roes="5" readonly>${dataContent.texto}</textarea>
             <div class="reactionPost" id="reactionPost">
               <div id="likesContent"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
-              <div><span><i class="fas fa-edit btnEdit dataId="${dataContent.identificador}"></i></span></div>
+              <div><span><i class="fas fa-edit btnEdit" data-id="${doc.id}"></i></span></div>
               <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
             </div>
           </div>
@@ -106,8 +102,11 @@ export const profile = () => {
         const btnEdit = document.querySelectorAll('.btnEdit');
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', (e) => {
-            // eslint-disable-next-line no-console
-            console.log(e.target.dataset.uid);
+            console.log(e.target.dataset.id);
+            getPostEdit(e.target.dataset.id);
+            const textEdit = document.querySelector('#postContentText');
+            textEdit.style.display = 'block';
+            textEdit.value = dataContent.texto;
           });
         });
       });
