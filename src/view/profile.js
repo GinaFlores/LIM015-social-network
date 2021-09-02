@@ -1,5 +1,7 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection, getCollection } from '../firebase/firebaseStore.js';
+import {
+  postCollection, getCollection, updatelike, updateDislike,
+} from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -109,3 +111,35 @@ export const profile = () => {
 
   return sectionProfile;
 };
+
+// declarando id del boton de los likes
+
+
+sectionProfile.addEventListener('click', async (e) => {
+  const contentPosts = sectionProfile.querySelector('#containerPosts');
+  const userUid = localStorage.getItem('uid');
+  const uidGoogle = localStorage.getItem('uidGoogle');
+  if (e.target.classList.contains('fa-heart')) {
+    const posts = await getPost();
+    posts.forEach(async (doc) => {
+      const arrayIDLikes = doc.data().array;
+      const postId = doc.data();
+      postId.id = doc.id;
+      if (postId.id === e.target.dataset.id) {
+        if (arrayIDLikes.includes(userUid || uidGoogle)) {
+          const index = arrayIDLikes.indexOf(userUid);
+          const decrement = -1;
+          arrayIDLikes.splice(index, 1);
+          await updateDislike(e.target.dataset.id, decrement, arrayIDLikes);
+          postSection.innerHTML = '';
+          showAllPosts(postSection);
+        } else {
+          const increment = 1;
+          await updatelike(arrayIDLikes, e.target.dataset.id, increment, userUid || uidGoogle);
+          postSection.innerHTML = '';
+          showAllPosts(postSection);
+        }
+      }
+    });
+  }
+});
