@@ -6,43 +6,13 @@ export const home = () => {
   // const nodo = document.createElement('div');
   sectionHome.classList.add('iHome');
   sectionHome.innerHTML = `
+  <!-- Inicio-->
   <div class="containerHome">
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
-    <h1>HOME</h1>
+    <div class="container">
+      <div><img src="../img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
+    </div>
+    <div>Gina</div>
+    <p>Viajera</p>
   </div>
   `;
   // sectionHome.appendChild(nodo);
