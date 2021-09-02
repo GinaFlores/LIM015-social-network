@@ -1,4 +1,5 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
+// eslint-disable-next-line import/named
 import { postCollection, getCollection } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
@@ -53,6 +54,7 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     const showName = user.displayName || localStorage.getItem('nameRegister');
+    // eslint-disable-next-line no-console
     console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, user.uid, post, photo)
@@ -68,6 +70,7 @@ export const profile = () => {
       // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
+    // eslint-disable-next-line no-console
     console.log(showName, user.email, user.uid, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
@@ -79,6 +82,7 @@ export const profile = () => {
       collection.forEach((element) => {
         // console.log(element.data());
         const dataContent = element.data();
+        // eslint-disable-next-line no-console
         console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
@@ -102,6 +106,7 @@ export const profile = () => {
         const btnEdit = document.querySelectorAll('.btnEdit');
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', (e) => {
+            // eslint-disable-next-line no-console
             console.log(e.target.dataset.uid);
           });
         });
@@ -115,10 +120,7 @@ export const profile = () => {
 
 // Funcion para eliminar publicacciones
 export const removePost = (deletePost, postId) => {
-  // eslint-disable-next-line no-restricted-globals
-  // eslint-disable-next-line no-alert
-  // eslint-disable-next-line no-restricted-globals
-  const optionDelete = confirm('¿Estás seguro de querer eliminar el post?');
+  const optionDelete = document.write('¿Estás seguro de querer eliminar el post?');
   if (optionDelete === true) {
     deletePost(postId).then(() => {
       // eslint-disable-next-line no-console
