@@ -88,16 +88,16 @@ export const profile = () => {
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
-                <p id="userName">${dataContent.usuario}</p>
-                <span id="time">${dataContent.timePost.toDate().toDateString()}</span>
+                <p id="userName-${doc.id}">${dataContent.usuario}</p>
+                <span id="time-${doc.id}">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
-            <textarea class="textEdit" id="postContentText" cols="30" roes="5" readonly>${dataContent.texto}</textarea>
-            <div class="reactionPost" id="reactionPost">
-              <div id="likesContent"></div>
+            <textarea class="textEdit" id="postContentText-${doc.id}" cols="30" roes="5" readonly>${dataContent.texto}</textarea>
+            <div class="reactionPost" id="reactionPost-${doc.id}">
+              <div id="likesContent-${doc.id}"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
               <div><span><i class="fas fa-edit btnEdit" data-id="${doc.id}"></i></span></div>
-              <div><span id="closeItem"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
+              <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
           </div>
           `;
