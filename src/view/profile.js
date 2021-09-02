@@ -111,9 +111,9 @@ export const profile = () => {
 
   return sectionProfile;
 };
-
+/*
 // declarando id del boton de los likes
-const 
+const
 sectionProfile.addEventListener('click', async (e) => {
   const contentPosts = sectionProfile.querySelector('#containerPosts');
   const userUid = localStorage.getItem('uid');
@@ -142,3 +142,4 @@ sectionProfile.addEventListener('click', async (e) => {
     });
   }
 });
+*/
