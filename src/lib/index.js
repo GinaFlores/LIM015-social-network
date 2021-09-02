@@ -60,7 +60,7 @@ export const observadorWatcher = () => {
 export const logOutClick = () => {
   logOut()
     .then(() => {
-      localStorage.setItem('');
+      localStorage.clear();
       window.location.hash = '#/LogIn';
     })
     .catch((err) => {
