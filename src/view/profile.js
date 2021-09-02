@@ -1,6 +1,6 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
-  postCollection, getCollection, updatelike, updateDislike, deletePost, getPostEdit, 
+  postCollection, getCollection, deletePost, getPostEdit, postEdit,
 } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
@@ -36,16 +36,16 @@ export const profile = () => {
 
   // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
-  const nameUser = sectionProfile.querySelector('#nameUser');
+  // const nameUser = sectionProfile.querySelector('#nameUser');
   const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
 
   // funcion para mostrar el nombre de usuaria
-  if (localStorage.getItem('userName') == null) {
+  /* if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
-  }
+  } */
 
   // funcion para agregar post
   const writePost = (event) => {
@@ -54,7 +54,8 @@ export const profile = () => {
     const post = textContent.value;
     const user = currentUser();
     const photo = currentUser().photoURL;
-    const showName = user.displayName || localStorage.getItem('nameRegister');
+    const showName = localStorage.getItem('userEmail');
+    // eslint-disable-next-line no-console
     console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, user.uid, post, photo)
@@ -75,9 +76,9 @@ export const profile = () => {
   const getPosts = () => {
     getCollection().onSnapshot((collection) => {
       contentPosts.innerHTML = '';
-      collection.forEach((element) => {
+      collection.forEach((doc) => {
         // console.log(element.data());
-        const dataContent = element.data();
+        const dataContent = doc.data();
         console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
@@ -88,13 +89,14 @@ export const profile = () => {
                 <span id="time">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
-            <p class="postText" id="postContent">${dataContent.texto}</p>
-            <textarea id="postContentText" cols="30" roes="5" style="display:none"></textarea>
-            <div class="reactionPost" id="reactionPost">
-              <div id="likesContent"></div>
+            <p class="textEdit" id="postContentText-${doc.id}">${dataContent.texto}</p>
+            <textarea class="" id="textareaContent-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
+            <div class="reactionPost" id="reactionPost-${doc.id}">
+              <div id="likesContent-${doc.id}"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
-              <div><span><i class="fas fa-edit btnEdit dataId="${dataContent.identificador}"></i></span></div>
-              <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
+              <div><span><i class="fas fa-edit btnEdit" id="iconEdit-${doc.id}"></i></span></div>
+              <div><span><i class="fas fa-save btnSave" id="icontSave-${doc.id}" style="display:none"></i></span></div>
+              <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
           </div>
           `;
@@ -102,15 +104,36 @@ export const profile = () => {
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', (e) => {
             console.log(e.target.dataset.uid);
+            // eslint-disable-next-line no-shadow
+            btn.addEventListener('click', async (e) => {
+              const text = document.querySelector(`#textareaContent-${e.target.dataset.id}`);
+              text.style.display = 'block';
+              const parrafoPost = document.querySelector(`#postContentText-${e.target.dataset.id}`);
+              parrafoPost.style.display = 'none';
+              const btnSave = document.querySelector(`#icontSave-${e.target.dataset.id}`);
+              btnSave.style.display = 'block';
+              const btnEditPost = document.querySelector(`#iconEdit-${e.target.dataset.id}`);
+              btnEditPost.style.display = 'none';
+              /* console.log(e.target.dataset.id); */
+              /* await postEdit(e.target.dataset.id, { texto: text.value }); */
+              /* const edition = await getPostEdit(e.target.dataset.id);
+            const task = edition.data();
+            console.log(task); */
+
+            /* const textEdit = document.querySelector('#postContentText');
+            textEdit.style.display = 'block';
+            textEdit.value = dataContent.texto; */
+            });
           });
         });
       });
     });
   };
-  getPosts();
 
+  getPosts();
   return sectionProfile;
 };
+
 /*
 // declarando id del boton de los likes
 const

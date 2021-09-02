@@ -36,3 +36,5 @@ export const updateDislike = (id, value, newArray) => firebase.firestore().colle
 export const deletePost = (id) => firebase.firestore().collection('posts').doc(id).delete();
 // Realizando función Editar
 export const getPostEdit = (id) => firebase.firestore().collection('posts').doc(id).get();
+// Realizando función Editar
+export const postEdit = (id, loading) => firebase.firestore().collection('posts').doc(id).update(loading);
