@@ -18,6 +18,6 @@ export const getCollection = () => firebase.firestore().collection('posts').orde
 */
 
 // Realizando la función de delete
-export const deletePost = () => firebase.firestore().collection('posts').doc().delete();
+export const deletePost = (id) => firebase.firestore().collection('posts').doc(id).delete();
 // Realizando función Editar
 export const getPostEdit = (id) => firebase.firestore().collection('posts').doc(id).get();

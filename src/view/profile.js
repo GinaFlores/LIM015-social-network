@@ -118,10 +118,10 @@ export const profile = () => {
 };
 
 // Funcion para eliminar publicacciones
-export const removePost = (deletePost, postId) => {
+export const removePost = (deletePost, id) => {
   const optionDelete = document.write('¿Estás seguro de querer eliminar el post?');
   if (optionDelete === true) {
-    deletePost(postId).then(() => {
+    deletePost(id).then(() => {
       // eslint-disable-next-line no-console
       console.log(`post${postId}borrado con exito`);
     });
