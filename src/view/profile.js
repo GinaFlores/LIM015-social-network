@@ -1,5 +1,7 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
-import { postCollection, getCollection, getPostEdit } from '../firebase/firebaseStore.js';
+import {
+  postCollection, getCollection, deletePost, getPostEdit,
+} from '../firebase/firebaseStore.js';
 
 export const profile = () => {
   const sectionProfile = document.createElement('section');
@@ -95,35 +97,48 @@ export const profile = () => {
               <div id="likesContent"></div>
               <div><span><i class="fas fa-heart"></i></span></div>
               <div><span><i class="fas fa-edit btnEdit" data-id="${doc.id}"></i></span></div>
-              <div><span id="closeItem"><i class="fas fa-trash"></i></span></div>
+              <div><span id="closeItem"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
           </div>
           `;
-        const btnEdit = document.querySelectorAll('.btnEdit');
-        btnEdit.forEach((btn) => {
-          btn.addEventListener('click', (e) => {
-            console.log(e.target.dataset.id);
-            getPostEdit(e.target.dataset.id);
-            const textEdit = document.querySelector('#postContentText');
-            textEdit.style.display = 'block';
-            textEdit.value = dataContent.texto;
+        // Funcion para eliminar publicaciones
+        const btnDelete = document.querySelectorAll('.btnDelete');
+        btnDelete.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            /* console.log(e.target.dataset.id); */
+            await deletePost(e.target.dataset.id);
           });
         });
+
+        // Funcion para editar publicaciones
+        const btnEdit = document.querySelectorAll('.btnEdit');
+        btnEdit.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            /* console.log(e.target.dataset.id); */
+            const edition = await getPostEdit(e.target.dataset.id);
+            const task = edition.data();
+            console.log(task);
+
+            /* const textEdit = document.querySelector('#postContentText');
+            textEdit.style.display = 'block';
+            textEdit.value = dataContent.texto; */
+          });
+        });
+
+        /* const removePost = (deletePost, id) => {
+          const optionDelete = document.write('¿Estás seguro de querer eliminar el post?');
+          if (optionDelete === true) {
+            deletePost(id).then(() => {
+            // eslint-disable-next-line no-console
+              console.log(`post${postId}borrado con exito`);
+            });
+          }
+        };
+        */
       });
     });
   };
   getPosts();
 
   return sectionProfile;
-};
-
-// Funcion para eliminar publicacciones
-export const removePost = (deletePost, id) => {
-  const optionDelete = document.write('¿Estás seguro de querer eliminar el post?');
-  if (optionDelete === true) {
-    deletePost(id).then(() => {
-      // eslint-disable-next-line no-console
-      console.log(`post${postId}borrado con exito`);
-    });
-  }
 };
