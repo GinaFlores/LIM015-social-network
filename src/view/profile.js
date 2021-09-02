@@ -1,6 +1,6 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
-  postCollection, getCollection, updatelike, updateDislike,
+  postCollection, getCollection, updatelike, updateDislike, deletePost, getPostEdit, 
 } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
@@ -113,8 +113,7 @@ export const profile = () => {
 };
 
 // declarando id del boton de los likes
-
-
+const 
 sectionProfile.addEventListener('click', async (e) => {
   const contentPosts = sectionProfile.querySelector('#containerPosts');
   const userUid = localStorage.getItem('uid');

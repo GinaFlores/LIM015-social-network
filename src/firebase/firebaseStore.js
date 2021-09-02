@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 // añadiendo documentos a nuestra coleccion de firestore llamadas posts
-export const postCollection = (nameUser, email, id, post, photo) => firebase.firestore().collection('posts').add({
+export const postCollection = (nameUser, email, post, photo) => firebase.firestore().collection('posts').add({
   usuario: nameUser,
   correo: email,
-  identificador: id,
   texto: post,
   foto: photo,
   timePost: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -28,3 +27,12 @@ export const updatelike = (doc, id, value, uid) => firebase.firestore().collecti
 
 // Función para quitar like
 export const updateDislike = (id, value, newArray) => firebase.firestore().collection('posts').doc(id).update({ likePost: firebase.firestore.FieldValue.increment(value), array: newArray });
+// Declaracion para fecha
+/* const date = new Date();
+  const datePost = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+*/
+
+// Realizando la función de delete
+export const deletePost = (id) => firebase.firestore().collection('posts').doc(id).delete();
+// Realizando función Editar
+export const getPostEdit = (id) => firebase.firestore().collection('posts').doc(id).get();
