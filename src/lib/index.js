@@ -32,6 +32,7 @@ export const writePost = (event) => {
     postCollection(user.email, user.displayName, user.uid, post, photo)
       .then(() => {
         document.getElementById('contentPost').value = '';
+        // eslint-disable-next-line no-console
         console.log('agregando post');
       }).catch((error) => {
         console.log('no se agregó post', error);
