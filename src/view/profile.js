@@ -35,15 +35,15 @@ export const profile = () => {
   sectionProfile.innerHTML = templateProfile;
   // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
-  // const nameUser = sectionProfile.querySelector('#nameUser');
+  const nameUser = sectionProfile.querySelector('#nameUser');
   const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
   // funcion para mostrar el nombre de usuaria
-  /* if (localStorage.getItem('userName') == null) {
+  if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
-  } */
+  }
   // funcion para agregar post
   const writePost = (event) => {
     event.preventDefault();
