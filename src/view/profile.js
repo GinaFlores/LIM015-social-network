@@ -98,14 +98,39 @@ export const profile = () => {
               <div><span><i class="fas fa-save btnSave" id="icontSave-${doc.id}" style="display:none"></i></span></div>
               <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
+            <!--modalDelete-->
+            <div class="modalDeletePost">
+              <div class="modalContent">
+              <h1 class="alertText"> Stop!</h1>
+              <div class="modalText">
+              <p class="alert">¿Segura que deseas eliminar este post?</p>
+              </div>
+              <div class="modalBotones">
+                <button class="btnYes">Si</button> 
+                <button class="btnNo">No</button> 
+              </div>
+              </div>
+            </div>
+    </div>
+
           </div>
           `;
         // Funcion para eliminar publicaciones
         const btnDelete = document.querySelectorAll('.btnDelete');
+        const btnYes = document.querySelector('.btnYes');
+        const btnNo = document.querySelector('.btnNo');
+        const modalDelete = document.querySelector('.modalDeletePost');
         btnDelete.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            /* console.log(e.target.dataset.id); */
-            await deletePost(e.target.dataset.id);
+          btn.addEventListener('click', (e) => {
+            modalDelete.classList.add('showModal');
+            btnYes.addEventListener('click', () => {
+              contentPosts.innerHTML = '';
+              deletePost(e.target.dataset.id);
+              modalDelete.classList.remove('showModal');
+            });
+            btnNo.addEventListener('click', () => {
+              modalDelete.classList.remove('showModal');
+            });
           });
         });
         // Funcion para editar publicaciones
