@@ -98,7 +98,73 @@ body {
     width: 18px;
     margin-right: 10px;
 }
-
+/*modalDelete*/
+.modalDeletePost {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: linear-gradient(189deg, rgba(157,1,145,1) 8%, rgba(253,58,105,1) 59%, rgba(255,255,255,1) 100%);
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .showModal {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modalContent {
+    width: 350px;
+    height: 250px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.199);
+    transition: all 500ms ease;
+    position: relative;
+    border-radius: 20px;
+    }
+    .alertText {
+    padding: 10px;
+    color: #120078;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    }
+    .modalText {
+    font-family: var(--secondary-font);
+    font-size: 1.2rem;
+    color: rgb(70, 67, 71);
+    text-align: center;
+    margin: 2rem 20px;
+    }
+    .modalBotones {
+    display: flex;
+    justify-content: space-evenly;  
+    margin-top: rem;
+    }
+    .btnNo, .btnYes {
+    display: inline-block;
+    color: white;
+    background: #120078;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 19px;
+    min-height: 40px;
+    width: 120px;
+    margin: 15px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    }
+   .btnYes:hover {
+     background: #FD3A69;
+    }
+    .btnNo:hover {
+      background: #FD3A69; 
+    }
 
 @media (max-width: 540px) {
     .frontProfile {
