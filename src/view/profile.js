@@ -91,8 +91,8 @@ export const profile = () => {
             <p class="textEdit" id="p-e-${doc.id}">${dataContent.texto}</p>
             <textarea class="" id="t-e-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
             <div class="reactionPost" id="reactionPost-${doc.id}">
-              <div id="likesContent-${doc.id}"></div>
-              <div><span><i class="fas fa-heart btnLike"></i></span></div>
+            <div id="likesContent">${dataContent.like}</div>
+              <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
               <div><span><i class="fas fa-edit btnEdit" id="e-${doc.id}"></i></span></div>
               <div><span><i class="fas fa-save btnSave" id="s-e-${doc.id}" style="display:none"></i></span></div>
               <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
