@@ -1,6 +1,6 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
-  postCollection, getCollection, deletePost, getPostEdit, postEdit,
+  postCollection, getCollection, deletePost, updatelike, updateDislike, getPostEdit, postEdit,
 } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
@@ -33,19 +33,17 @@ export const profile = () => {
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
-
   // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
-  // const nameUser = sectionProfile.querySelector('#nameUser');
+  const nameUser = sectionProfile.querySelector('#nameUser');
   const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
-
   // funcion para mostrar el nombre de usuaria
-  /* if (localStorage.getItem('userName') == null) {
+  if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
-  } */
+  }
 
   // funcion para agregar post
   const writePost = (event) => {
@@ -68,7 +66,6 @@ export const profile = () => {
     }
   };
   btnPost.addEventListener('click', (writePost));
-
   // funcion de mostrar publicaciones
   const getPosts = () => {
     getCollection().onSnapshot((collection) => {
@@ -76,6 +73,7 @@ export const profile = () => {
       collection.forEach((doc) => {
         // console.log(element.data());
         const dataContent = doc.data();
+        // console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
@@ -88,8 +86,8 @@ export const profile = () => {
             <p class="textEdit" id="postContentText-${doc.id}">${dataContent.texto}</p>
             <textarea class="" id="textareaContent-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
             <div class="reactionPost" id="reactionPost-${doc.id}">
-              <div id="likesContent-${doc.id}"></div>
-              <div><span><i class="fas fa-heart"></i></span></div>
+              <div id="likesContent">${dataContent.like}</div>
+              <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
               <div><span><i class="fas fa-edit btnEdit" id="iconEdit-${doc.id}"></i></span></div>
               <div><span><i class="fas fa-save btnSave" id="icontSave-${doc.id}" style="display:none"></i></span></div>
               <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
@@ -104,7 +102,6 @@ export const profile = () => {
             await deletePost(e.target.dataset.id);
           });
         });
-
         // Funcion para editar publicaciones
         const btnEdit = document.querySelectorAll('.btnEdit');
         btnEdit.forEach((btn) => {
@@ -122,23 +119,28 @@ export const profile = () => {
             /* const edition = await getPostEdit(e.target.dataset.id);
             const task = edition.data();
             console.log(task); */
-
             /* const textEdit = document.querySelector('#postContentText');
             textEdit.style.display = 'block';
             textEdit.value = dataContent.texto; */
           });
         });
-
-        /* const removePost = (deletePost, id) => {
-          const optionDelete = document.write('¿Estás seguro de querer eliminar el post?');
-          if (optionDelete === true) {
-            deletePost(id).then(() => {
-            // eslint-disable-next-line no-console
-              console.log(`post${postId}borrado con exito`);
-            });
-          }
-        };
-        */
+        // declarando id del boton de los likes
+        const btnHeart = document.querySelectorAll('.btnLike');
+        btnHeart.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const increment = 1;
+            const decrement = -1;
+            const idUser = localStorage.getItem('userId');
+            const array = dataContent.array;
+            if (array.includes(idUser)) {
+              const index = array.indexOf(idUser);
+              array.splice(index, 1);
+              await updateDislike(e.target.dataset.id, decrement, array);
+            } else {
+              await updatelike(array, e.target.dataset.id, increment, idUser);
+            }
+          });
+        });
       });
     });
   };

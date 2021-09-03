@@ -7,11 +7,20 @@ export const postCollection = (nameUser, email, post, photo) => firebase.firesto
   foto: photo,
   timePost: firebase.firestore.Timestamp.fromDate(new Date()),
   like: 0,
+  array: [],
 });
 
 // obteniendo posts de forma descendente
 export const getCollection = () => firebase.firestore().collection('posts').orderBy('timePost', 'desc');
 
+export const getPostForEdit = (id) => firebase.firestore().collection('posts').doc(id).get();
+// funcion para guardar los elementos del post
+
+// Función para dar like
+export const updatelike = (doc, id, value, uid) => firebase.firestore().collection('posts').doc(id).update({ like: firebase.firestore.FieldValue.increment(value), array: doc.concat(uid) });
+
+// Función para quitar like
+export const updateDislike = (id, value, newArray) => firebase.firestore().collection('posts').doc(id).update({ like: firebase.firestore.FieldValue.increment(value), array: newArray });
 // Declaracion para fecha
 /* const date = new Date();
   const datePost = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
