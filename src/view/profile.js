@@ -1,6 +1,6 @@
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
-  postCollection, getCollection, deletePost, updatelike, updateDislike, getPostEdit, postEdit,
+  postCollection, getCollection, deletePost, updatelike, updateDislike, postEdit,
 } from '../firebase/firebaseStore.js';
 
 export const profile = () => {
@@ -35,16 +35,15 @@ export const profile = () => {
   sectionProfile.innerHTML = templateProfile;
   // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
-  const nameUser = sectionProfile.querySelector('#nameUser');
+  // const nameUser = sectionProfile.querySelector('#nameUser');
   const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
   // funcion para mostrar el nombre de usuaria
-  if (localStorage.getItem('userName') == null) {
+  /* if (localStorage.getItem('userName') == null) {
     nameUser.textContent = localStorage.getItem('nameRegister');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
-  }
-
+  } */
   // funcion para agregar post
   const writePost = (event) => {
     event.preventDefault();
@@ -53,17 +52,23 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     const showName = localStorage.getItem('userEmail');
+    // eslint-disable-next-line no-console
+    console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, post, photo)
         .then(() => {
           textContent.value = '';
+          // eslint-disable-next-line no-console
           console.log('agregando post');
         }).catch((error) => {
+          // eslint-disable-next-line no-console
           console.log('no se agregó post', error);
         });
     } else {
+      // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
+    console.log(showName, user.email, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
   // funcion de mostrar publicaciones
@@ -83,13 +88,13 @@ export const profile = () => {
                 <span id="time-${doc.id}">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
-            <p class="textEdit" id="postContentText-${doc.id}">${dataContent.texto}</p>
-            <textarea class="" id="textareaContent-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
+            <p class="textEdit" id="p-e-${doc.id}">${dataContent.texto}</p>
+            <textarea class="" id="t-e-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
             <div class="reactionPost" id="reactionPost-${doc.id}">
-              <div id="likesContent">${dataContent.like}</div>
-              <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
-              <div><span><i class="fas fa-edit btnEdit" id="iconEdit-${doc.id}"></i></span></div>
-              <div><span><i class="fas fa-save btnSave" id="icontSave-${doc.id}" style="display:none"></i></span></div>
+              <div id="likesContent-${doc.id}"></div>
+              <div><span><i class="fas fa-heart"></i></span></div>
+              <div><span><i class="fas fa-edit btnEdit" id="e-${doc.id}"></i></span></div>
+              <div><span><i class="fas fa-save btnSave" id="s-e-${doc.id}" style="display:none"></i></span></div>
               <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
             <!--modalDelete-->
@@ -105,8 +110,6 @@ export const profile = () => {
               </div>
               </div>
             </div>
-    </div>
-
           </div>
           `;
         // Funcion para eliminar publicaciones
@@ -130,23 +133,35 @@ export const profile = () => {
         // Funcion para editar publicaciones
         const btnEdit = document.querySelectorAll('.btnEdit');
         btnEdit.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            const text = document.querySelector(`#textareaContent-${e.target.dataset.id}`);
+          btn.addEventListener('click', (e) => {
+            // console.log(e.target.id);
+            const text = document.querySelector(`#t-${e.target.id}`);
             text.style.display = 'block';
-            const parrafoPost = document.querySelector(`#postContentText-${e.target.dataset.id}`);
+            const parrafoPost = document.querySelector(`#p-${e.target.id}`);
             parrafoPost.style.display = 'none';
-            const btnSave = document.querySelector(`#icontSave-${e.target.dataset.id}`);
-            btnSave.style.display = 'block';
-            const btnEditPost = document.querySelector(`#iconEdit-${e.target.dataset.id}`);
+            const btnEditPost = document.querySelector(`#${e.target.id}`);
             btnEditPost.style.display = 'none';
-            /* console.log(e.target.dataset.id); */
-            /* await postEdit(e.target.dataset.id, { texto: text.value }); */
-            /* const edition = await getPostEdit(e.target.dataset.id);
-            const task = edition.data();
-            console.log(task); */
-            /* const textEdit = document.querySelector('#postContentText');
-            textEdit.style.display = 'block';
-            textEdit.value = dataContent.texto; */
+            const btnSave = document.querySelector(`#s-${e.target.id}`);
+            btnSave.style.display = 'block';
+          });
+        });
+        // Funcion para guardar publicaciones
+        const btnsSave = document.querySelectorAll('.btnSave');
+        btnsSave.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const idBtn = e.target.id;
+            const idNewBtn = idBtn.substring(4);
+            // console.log(idBtn);
+            // console.log(idNewBtn);
+            const text = document.querySelector(`#t-e-${idNewBtn}`);
+            text.style.display = 'none';
+            const parrafoPost = document.querySelector(`#p-e-${idNewBtn}`);
+            parrafoPost.style.display = 'block';
+            const btnEditPost = document.querySelector(`#e-${idNewBtn}`);
+            btnEditPost.style.display = 'block';
+            const btnSave = document.querySelector(`#s-e-${idNewBtn}`);
+            btnSave.style.display = 'none';
+            await postEdit(idNewBtn, { texto: text.value });
           });
         });
         // declarando id del boton de los likes
@@ -170,6 +185,5 @@ export const profile = () => {
     });
   };
   getPosts();
-
   return sectionProfile;
 };
