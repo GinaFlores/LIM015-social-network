@@ -104,9 +104,9 @@ export const profile = () => {
             <!--modalDelete-->
             <div class="modalDeletePost">
               <div class="modalContent">
-              <h1>Advertencia!</h1>
+              <h1 class="alertText">Advertencia!</h1>
               <div class="modalText">
-              <p>¿Segura que deseas eliminar este post?</p>
+              <p class="alert">¿Segura que deseas eliminar este post?</p>
               </div>
               <div class="modalBotones">
                 <button class="btnYes">Si</button> 
@@ -120,9 +120,9 @@ export const profile = () => {
           `;
         // Funcion para eliminar publicaciones
         const btnDelete = document.querySelectorAll('.btnDelete');
-        const btnYes = document.querySelectorAll('.btnYes');
-        const btnNo = document.querySelectorAll('.btnNo');
-        const modalDelete = document.querySelectorAll('.modalDeletePost');
+        const btnYes = document.querySelector('.btnYes');
+        const btnNo = document.querySelector('.btnNo');
+        const modalDelete = document.querySelector('.modalDeletePost');
         btnDelete.forEach((btn) => {
           btn.addEventListener('click', (e) => {
             modalDelete.classList.add('showModal');
