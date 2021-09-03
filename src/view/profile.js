@@ -105,7 +105,9 @@ export const profile = () => {
             <div class="modalDeletePost">
               <div class="modalContent">
               <h1>Advertencia!</h1>
+              <div class="modalText">
               <p>¿Segura que deseas eliminar este post?</p>
+              </div>
               <div class="modalBotones">
                 <button class="btnYes">Si</button> 
                 <button class="btnNo">No</button> 
@@ -122,8 +124,16 @@ export const profile = () => {
         const btnNo = document.querySelectorAll('.btnNo');
         const modalDelete = document.querySelectorAll('.modalDeletePost');
         btnDelete.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            await deletePost(e.target.dataset.id);
+          btn.addEventListener('click', (e) => {
+            modalDelete.classList.add('showModal');
+            btnYes.addEventListener('click', () => {
+              contentPosts.innerHTML = '';
+              deletePost(e.target.dataset.id);
+              modalDelete.classList.remove('showModal');
+            });
+            btnNo.addEventListener('click', () => {
+              modalDelete.classList.remove('showModal');
+            });
           });
         });
 
