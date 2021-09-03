@@ -100,8 +100,8 @@ export const profile = () => {
               <p class="alert">¿Segura que deseas eliminar este post?</p>
               </div>
               <div class="modalBotones">
-                <button class="btnYes">Si</button> 
-                <button class="btnNo">No</button> 
+                <button class="btnYes">Si</button>
+                <button class="btnNo">No</button>
               </div>
               </div>
             </div>
