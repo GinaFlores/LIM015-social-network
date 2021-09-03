@@ -55,23 +55,17 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     const showName = localStorage.getItem('userEmail');
-    // eslint-disable-next-line no-console
-    console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, post, photo)
         .then(() => {
           textContent.value = '';
-          // eslint-disable-next-line no-console
           console.log('agregando post');
         }).catch((error) => {
-          // eslint-disable-next-line no-console
           console.log('no se agregó post', error);
         });
     } else {
-      // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
-    console.log(showName, user.email, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
@@ -82,7 +76,6 @@ export const profile = () => {
       collection.forEach((doc) => {
         // console.log(element.data());
         const dataContent = doc.data();
-        console.log(dataContent);
         contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
