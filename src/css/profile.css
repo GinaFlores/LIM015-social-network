@@ -108,7 +108,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(250, 250, 250, 0.24);
     transition: all 500ms ease;
     opacity: 0;
     visibility: hidden;
@@ -118,18 +117,17 @@ body {
     visibility: visible;
   }
   .modalContent {
-    width: 380px;
-    height: 280px;
+    width: 350px;
+    height: 250px;
     margin: auto;
-    margin-top: 5px;
     background: #fff;
-    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.199);
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.199);
     transition: all 500ms ease;
     position: relative;
     border-radius: 20px;
     }
     .alertText {
-    padding: 5px;
+    padding: 10px;
     color: #120078;
     border-radius: 15px;
     font-size: 1.5rem;

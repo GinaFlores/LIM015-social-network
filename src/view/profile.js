@@ -104,7 +104,7 @@ export const profile = () => {
             <!--modalDelete-->
             <div class="modalDeletePost">
               <div class="modalContent">
-              <h1 class="alertText">Advertencia!</h1>
+              <h1 class="alertText"> Stop!</h1>
               <div class="modalText">
               <p class="alert">¿Segura que deseas eliminar este post?</p>
               </div>
