@@ -101,13 +101,28 @@ export const profile = () => {
               <div><span><i class="fas fa-save btnSave" id="icontSave-${doc.id}" style="display:none"></i></span></div>
               <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
+            <!--modalDelete-->
+            <div class="modalDeletePost">
+              <div class="modalContent">
+              <h1>Advertencia!</h1>
+              <p>¿Segura que deseas eliminar este post?</p>
+              <div class="modalBotones">
+                <button class="btnYes">Si</button> 
+                <button class="btnNo">No</button> 
+              </div>
+              </div>
+            </div>
+    </div>
+
           </div>
           `;
         // Funcion para eliminar publicaciones
         const btnDelete = document.querySelectorAll('.btnDelete');
+        const btnYes = document.querySelectorAll('.btnYes');
+        const btnNo = document.querySelectorAll('.btnNo');
+        const modalDelete = document.querySelectorAll('.modalDeletePost');
         btnDelete.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
-            /* console.log(e.target.dataset.id); */
             await deletePost(e.target.dataset.id);
           });
         });
