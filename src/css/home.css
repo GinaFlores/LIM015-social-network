@@ -1,5 +1,5 @@
 body {
-    font-family: Rubik,Arial,sans-serif
+    font-family: Rubik,Arial,sans-serif;
 }
 
 .header {
@@ -63,7 +63,17 @@ body {
 }
 
 .containerHome {
-    padding-top: 5.5rem;
+    padding-top: 5rem;
+}
+.infoPhoto {
+    border-bottom: 1px solid #c1c0c0;;
+}
+.containerInfo {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 1rem 5px;
+    text-align: center;
 }
 .photoUserHome {
     width: 72px;
@@ -73,7 +83,65 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
 }
-
+.divPostHome {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-bottom: 1rem;
+}
+.btnPosts {
+    display: flex;
+    justify-content: end;
+}
+textarea {
+    resize: none;
+    align-content: center;
+    width: -webkit-fill-available;
+}
+.textEdit {
+    padding: 1rem 0 12px 0;
+}
+.btnLike,
+.btnEdit,
+.btnDelete,
+.btnSave {
+    cursor: pointer;
+}
+.divSave {
+    display: flex;
+    justify-content: end;
+    padding-top: 0.5rem;
+}
+.btnEdit {
+    margin-right: 0.5rem;
+}
+.postProfileHome {
+    background: #fff;
+    color: #626262;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+    .containerHome {
+        display: grid;
+        grid-template-columns: 35% 60%;
+        grid-gap: 1.5rem;
+        justify-content: center;
+        margin: 0 5rem;
+    }
+    .containerInfo {
+        height: 8.5rem;
+    }
+    .divPostHome {
+        margin-top: 1rem;
+    }
+}
+@media (min-width: 1400px) {
+    .containerHome {
+        margin: 0 8.5rem;
+    }
+}
 @media (max-width: 767px) {
     .navMenu {
         flex-direction: column;
@@ -108,5 +176,8 @@ body {
 
     .navMenuVisible {
         left: 0;
+    }
+    .containerHome {
+        margin: 0 0.3rem;
     }
 }
