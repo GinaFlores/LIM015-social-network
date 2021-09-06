@@ -1,0 +1,5 @@
+const firebase = {
+  auth: {
+
+  },
+};
