@@ -81,7 +81,9 @@ export const profile = () => {
         // console.log(element.data());
         const dataContent = doc.data();
         // console.log(dataContent);
-        contentPosts.innerHTML += `
+        // eslint-disable-next-line eqeqeq
+        if (dataContent.usuario == localStorage.getItem('userEmail')) {
+          contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
@@ -114,6 +116,7 @@ export const profile = () => {
             </div>
           </div>
           `;
+        }
         // Funcion para eliminar publicaciones
         const btnDelete = document.querySelectorAll('.btnDelete');
         const btnYes = document.querySelector('.btnYes');
