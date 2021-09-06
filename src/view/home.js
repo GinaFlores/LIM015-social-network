@@ -2,7 +2,7 @@
 import { logOutClick, observadorWatcher } from '../lib/index.js';
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
-  postCollection, getCollection, deletePost, getPostEdit, postEdit,
+  postCollection, getCollection, deletePost, updatelike, updateDislike, postEdit,
 } from '../firebase/firebaseStore.js';
 
 export const home = () => {
@@ -15,18 +15,20 @@ export const home = () => {
       <div class="infoPhoto">
         <div><img src="../img/viajera1.png" alt="photo profile" class="photoUserHome"></img></div>
       </div>
-      <div id="nameUserHom">Gina</div>
+      <p id="nameUserHom"></p>
       <p>Viajera</p>
     </div>
     <!-- Escribir Publicación -->
     <div class="writePostContainer">
-      <div class="divPost">
+      <div class="divPostHome">
         <img src="../img/viajera1.png" class="imgPost"></img>
         <div class="post">
           <div class="postGroup">
             <textarea id="contentPostHom" cols="35" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
           </div>
-          <button id="postButtonHom" type="submit"class="postButton">Publicar</button>
+          <div class="btnPosts">
+            <button id="postButtonHom" type="submit"class="postButton">Publicar</button>
+          </div>
         </div>
       </div>
       <div id="containerPostsHom"></div>
@@ -37,9 +39,16 @@ export const home = () => {
 
   // declarando variables globales
   const btnPostHom = sectionHome.querySelector('#postButtonHom');
-  // const nameUser = sectionProfile.querySelector('#nameUserHom');
+  const nameUser = sectionHome.querySelector('#nameUserHom');
   const textContentHom = sectionHome.querySelector('#contentPostHom');
   const contentPostsHom = sectionHome.querySelector('#containerPostsHom');
+
+  // funcion para mostrar el nombre de usuaria
+  if (localStorage.getItem('userName') == null) {
+    nameUser.textContent = localStorage.getItem('userEmail');
+  } else {
+    nameUser.textContent = localStorage.getItem('userName');
+  }
 
   // funcion para agregar post
   const writePost = (event) => {
@@ -71,7 +80,7 @@ export const home = () => {
         // console.log(element.data());
         const dataContent = doc.data();
         contentPostsHom.innerHTML += `
-          <div class="postProfile">
+          <div class="postProfileHome">
             <div class="datoProfile">
               <img src="../img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
@@ -79,47 +88,100 @@ export const home = () => {
                 <span id="timeHome-${doc.id}">${dataContent.timePost.toDate().toDateString()}</span>
               </div>
             </div>
-            <p class="textEdit" id="postContentTextHo-${doc.id}">${dataContent.texto}</p>
-            <textarea class="" id="textareaContentHo-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
+            <p class="textEdit" id="p-e-${doc.id}">${dataContent.texto}</p>
+            <textarea id="t-e-${doc.id}" cols="35" roes="5" style="display:none">${dataContent.texto}</textarea>
+            <div class="divSave"><span><i class="fas fa-save btnSave" id="s-e-${doc.id}" style="display:none"></i></span></div>
             <div class="reactionPost" id="reactionPostHom-${doc.id}">
-              <div id="likesContentHom-${doc.id}"></div>
-              <div><span><i class="fas fa-heart"></i></span></div>
-              <div><span><i class="fas fa-edit btnEdit" id="iconEditHome-${doc.id}"></i></span></div>
-              <div><span><i class="fas fa-save btnSave" id="icontSaveHome-${doc.id}" style="display:none"></i></span></div>
-              <div><span id="closeItemHome-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
+              <div id="likesContentHome">${dataContent.like}</div>
+                <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
+                <div><span><i class="fas fa-edit btnEdit" id="e-${doc.id}"></i></span></div>
+                <div><span id="closeItemHome-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
+            </div>
+            <!--modalDelete-->
+            <div class="modalDeletePost">
+              <div class="modalContent">
+              <h1 class="alertText"> Stop!</h1>
+              <div class="modalText">
+              <p class="alert">¿Segura que deseas eliminar este post?</p>
+              </div>
+              <div class="modalBotones">
+                <button class="btnYes">Si</button>
+                <button class="btnNo">No</button>
+              </div>
+              </div>
             </div>
           </div>
           `;
         // Funcion para eliminar publicaciones
-        const btnDeleteHome = document.querySelectorAll('.btnDelete');
-        btnDeleteHome.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            /* console.log(e.target.dataset.id); */
-            await deletePost(e.target.dataset.id);
+        const btnDelete = document.querySelectorAll('.btnDelete');
+        const btnYes = document.querySelector('.btnYes');
+        const btnNo = document.querySelector('.btnNo');
+        const modalDelete = document.querySelector('.modalDeletePost');
+        btnDelete.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            modalDelete.classList.add('showModal');
+            btnYes.addEventListener('click', () => {
+              contentPostsHom.innerHTML = '';
+              deletePost(e.target.dataset.id);
+              modalDelete.classList.remove('showModal');
+            });
+            btnNo.addEventListener('click', () => {
+              modalDelete.classList.remove('showModal');
+            });
           });
         });
 
         // Funcion para editar publicaciones
-        const btnEditHome = document.querySelectorAll('.btnEdit');
-        btnEditHome.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            const text = document.querySelector(`#textareaContentHo-${e.target.dataset.id}`);
+        const btnEdit = document.querySelectorAll('.btnEdit');
+        btnEdit.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            // console.log(e.target.id);
+            const text = document.querySelector(`#t-${e.target.id}`);
             text.style.display = 'block';
-            const parrafoPost = document.querySelector(`#postContentTextHo-${e.target.dataset.id}`);
+            const parrafoPost = document.querySelector(`#p-${e.target.id}`);
             parrafoPost.style.display = 'none';
-            const btnSave = document.querySelector(`#icontSaveHome-${e.target.dataset.id}`);
-            btnSave.style.display = 'block';
-            const btnEditPost = document.querySelector(`#iconEditHome-${e.target.dataset.id}`);
+            const btnEditPost = document.querySelector(`#${e.target.id}`);
             btnEditPost.style.display = 'none';
-            /* console.log(e.target.dataset.id); */
-            /* await postEdit(e.target.dataset.id, { texto: text.value }); */
-            /* const edition = await getPostEdit(e.target.dataset.id);
-            const task = edition.data();
-            console.log(task); */
+            const btnSave = document.querySelector(`#s-${e.target.id}`);
+            btnSave.style.display = 'block';
+          });
+        });
 
-            /* const textEdit = document.querySelector('#postContentText');
-            textEdit.style.display = 'block';
-            textEdit.value = dataContent.texto; */
+        // Funcion para guardar publicaciones
+        const btnsSave = document.querySelectorAll('.btnSave');
+        btnsSave.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const idBtn = e.target.id;
+            const idNewBtn = idBtn.substring(4);
+            // console.log(idBtn);
+            // console.log(idNewBtn);
+            const text = document.querySelector(`#t-e-${idNewBtn}`);
+            text.style.display = 'none';
+            const parrafoPost = document.querySelector(`#p-e-${idNewBtn}`);
+            parrafoPost.style.display = 'block';
+            const btnEditPost = document.querySelector(`#e-${idNewBtn}`);
+            btnEditPost.style.display = 'block';
+            const btnSave = document.querySelector(`#s-e-${idNewBtn}`);
+            btnSave.style.display = 'none';
+            await postEdit(idNewBtn, { texto: text.value });
+          });
+        });
+
+        // Funcion de dar like y quitar like
+        const btnHeart = document.querySelectorAll('.btnLike');
+        btnHeart.forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const increment = 1;
+            const decrement = -1;
+            const idUser = localStorage.getItem('userId');
+            const array = dataContent.array;
+            if (array.includes(idUser)) {
+              const index = array.indexOf(idUser);
+              array.splice(index, 1);
+              await updateDislike(e.target.dataset.id, decrement, array);
+            } else {
+              await updatelike(array, e.target.dataset.id, increment, idUser);
+            }
           });
         });
       });

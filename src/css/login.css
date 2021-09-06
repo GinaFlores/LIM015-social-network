@@ -46,7 +46,7 @@
 }
 .errorLogin {
     color : #120078;
-    font-weight: bold; 
+    font-weight: bold;
 }
 .linkResetP {
     text-decoration: none;
@@ -100,18 +100,20 @@ footer {
         max-width: 400px;
     }
 }
+@media(min-width: 1280px) {
+    .positionLogin {
+        margin: 6% 0 6% 65%;
+    }
+}
 @media(min-width: 900px) {
     .imgLogo {
         width: 250px;
         height: 145px;
     }
-    /* .positionLogin {
-        margin: 1% 0 1% 65%;
-    } */
 }
 @media(max-width: 780px) {
     .positionLogin {
-        margin: 1% 0 1% 50%;
+        margin: 25% 0 25% 50%;
     }
 }
 @media (max-width: 540px) {
@@ -122,4 +124,6 @@ footer {
         font-size: 30px;
     }
 }
+
+
 

@@ -51,7 +51,7 @@
         padding: 40px;
     }
     .positionRegister {
-        margin: 12% 0 12% 65%;
+        margin: 10% 0 10% 65%;
     }
 }
 @media (max-width: 1400px) {
@@ -59,14 +59,14 @@
         max-width: 400px;
     }
 }
-@media(min-width: 900px) {
-    /* .positionRegister {
-        margin: 1% 0 1% 65%;
-    } */
+@media(min-width: 1280px) {
+    .positionRegister {
+        margin: 7% 0 7% 65%;
+    }
 }
 @media(max-width: 780px) {
     .positionRegister {
-        margin: 1% 0 1% 50%;
+        margin: 26% 0 26% 50%;
     }
 }
 @media (max-width: 540px) {

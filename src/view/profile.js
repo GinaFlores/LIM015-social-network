@@ -14,8 +14,8 @@ export const profile = () => {
       <div><img src="../img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
     </div>
     <div class="details">
-      <h3 id="nameUser"></h3>
-      <p id"statu">Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
+      <h4 id="nameUser"></h4>
+      <p id"statu">Viajera</p>
     </div>
     <!-- Escribir Publicación -->
     <div class="writePostContainer">
@@ -25,7 +25,9 @@ export const profile = () => {
           <div class="postGroup">
             <textarea id="contentPost" cols="35" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
           </div>
-          <button id="postButton" type="submit"class="postButton">Publicar</button>
+          <div class="btnPosts">
+            <button id="postButton" type="submit"class="postButton">Publicar</button>
+          </div>
         </div>
       </div>
       <div id="containerPosts"></div>
@@ -33,17 +35,20 @@ export const profile = () => {
   </div>
   `;
   sectionProfile.innerHTML = templateProfile;
+
   // declarando variables globales
   const btnPost = sectionProfile.querySelector('#postButton');
   const nameUser = sectionProfile.querySelector('#nameUser');
   const textContent = sectionProfile.querySelector('#contentPost');
   const contentPosts = sectionProfile.querySelector('#containerPosts');
+
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
-    nameUser.textContent = localStorage.getItem('nameRegister');
+    nameUser.textContent = localStorage.getItem('userEmail');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }
+
   // funcion para agregar post
   const writePost = (event) => {
     event.preventDefault();
@@ -52,25 +57,22 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     const showName = localStorage.getItem('userEmail');
-    // eslint-disable-next-line no-console
     console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, post, photo)
         .then(() => {
           textContent.value = '';
-          // eslint-disable-next-line no-console
           console.log('agregando post');
         }).catch((error) => {
-          // eslint-disable-next-line no-console
           console.log('no se agregó post', error);
         });
     } else {
-      // eslint-disable-next-line no-alert
       alert('Ingrese su post');
     }
     console.log(showName, user.email, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
+
   // funcion de mostrar publicaciones
   const getPosts = () => {
     getCollection().onSnapshot((collection) => {
@@ -90,12 +92,12 @@ export const profile = () => {
             </div>
             <p class="textEdit" id="p-e-${doc.id}">${dataContent.texto}</p>
             <textarea class="" id="t-e-${doc.id}" cols="30" roes="5" style="display:none">${dataContent.texto}</textarea>
+            <div class="divSave"><span><i class="fas fa-save btnSave" id="s-e-${doc.id}" style="display:none"></i></span></div>
             <div class="reactionPost" id="reactionPost-${doc.id}">
-            <div id="likesContent">${dataContent.like}</div>
-              <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
-              <div><span><i class="fas fa-edit btnEdit" id="e-${doc.id}"></i></span></div>
-              <div><span><i class="fas fa-save btnSave" id="s-e-${doc.id}" style="display:none"></i></span></div>
-              <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
+              <div id="likesContent">${dataContent.like}</div>
+                <div><span><i class="fas fa-heart btnLike" data-id="${doc.id}"></i></span></div>
+                <div><span><i class="fas fa-edit btnEdit" id="e-${doc.id}"></i></span></div>
+                <div><span id="closeItem-${doc.id}"><i class="fas fa-trash btnDelete" data-id="${doc.id}"></i></span></div>
             </div>
             <!--modalDelete-->
             <div class="modalDeletePost">
@@ -130,6 +132,7 @@ export const profile = () => {
             });
           });
         });
+
         // Funcion para editar publicaciones
         const btnEdit = document.querySelectorAll('.btnEdit');
         btnEdit.forEach((btn) => {
@@ -145,6 +148,7 @@ export const profile = () => {
             btnSave.style.display = 'block';
           });
         });
+
         // Funcion para guardar publicaciones
         const btnsSave = document.querySelectorAll('.btnSave');
         btnsSave.forEach((btn) => {
@@ -164,6 +168,7 @@ export const profile = () => {
             await postEdit(idNewBtn, { texto: text.value });
           });
         });
+
         // declarando id del boton de los likes
         const btnHeart = document.querySelectorAll('.btnLike');
         btnHeart.forEach((btn) => {
