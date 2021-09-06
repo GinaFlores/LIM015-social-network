@@ -3,6 +3,6 @@ import { registerWithEmail } from '../src/firebase/firebaseAuth.js';
 
 describe('registerWithEmail', () => {
   it('debería permitir que un usuario pueda registrarse con correo y contraseña', () => {
-    expect(typeof myFunction).toBe('function');
+    expect(typeof registerWithEmail).toBe('function');
   });
 });
