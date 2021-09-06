@@ -14,8 +14,8 @@ export const profile = () => {
       <div><img src="../img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
     </div>
     <div class="details">
-      <h3 id="nameUser"></h3>
-      <p id"statu">Lives in Lima, Perú works at Nestlé I´m a Psycologist</p>
+      <h4 id="nameUser"></h4>
+      <p id"statu">Viajera</p>
     </div>
     <!-- Escribir Publicación -->
     <div class="writePostContainer">
@@ -44,7 +44,7 @@ export const profile = () => {
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
-    nameUser.textContent = localStorage.getItem('nameRegister');
+    nameUser.textContent = localStorage.getItem('userEmail');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }

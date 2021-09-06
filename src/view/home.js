@@ -15,7 +15,7 @@ export const home = () => {
       <div class="infoPhoto">
         <div><img src="../img/viajera1.png" alt="photo profile" class="photoUserHome"></img></div>
       </div>
-      <h3 id="nameUserHom"></h3>
+      <p id="nameUserHom"></p>
       <p>Viajera</p>
     </div>
     <!-- Escribir Publicación -->
@@ -45,7 +45,7 @@ export const home = () => {
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
-    nameUser.textContent = localStorage.getItem('nameRegister');
+    nameUser.textContent = localStorage.getItem('userEmail');
   } else {
     nameUser.textContent = localStorage.getItem('userName');
   }

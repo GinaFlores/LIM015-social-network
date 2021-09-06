@@ -23,7 +23,6 @@ body {
 
 .imageLogo {
     width: 160px;
-    /* height: 87.5px; */
     padding: 14px 20px;
 }
 
@@ -122,13 +121,17 @@ textarea {
     padding: 20px;
     margin-bottom: 1rem;
 }
+#nameUserHom {
+    font-weight: bold;
+    padding-top: 6px;
+}
 @media (min-width: 768px) {
     .containerHome {
         display: grid;
-        grid-template-columns: 35% 60%;
+        grid-template-columns: 45% 52%;
         grid-gap: 1.5rem;
         justify-content: center;
-        margin: 0 5rem;
+        margin: 0 2.5rem;
     }
     .containerInfo {
         height: 8.5rem;
@@ -140,6 +143,7 @@ textarea {
 @media (min-width: 1400px) {
     .containerHome {
         margin: 0 8.5rem;
+        grid-gap: 2rem;
     }
 }
 @media (max-width: 767px) {
@@ -147,7 +151,7 @@ textarea {
         flex-direction: column;
         align-items: center;
         margin-right: 20px;
-        background-color: #986D8E  /* #A03C78 */ /* #7B6079 */ /* #763857 */;
+        background-color: #986D8E;
         position: fixed;
         left: 0;
         top: 80px;
