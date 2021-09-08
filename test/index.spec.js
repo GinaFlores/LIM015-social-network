@@ -31,6 +31,7 @@ const fixtureData = {
 // Declarando a firebase como variable global
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
+// Test de funcion para elimar post
 describe('deletePost', () => {
   it('Debería poder eliminar una publicacion', () => {
     deletePost('abc12346')
@@ -41,4 +42,3 @@ describe('deletePost', () => {
       ));
   });
 });
-// Test de funcion para editar post
