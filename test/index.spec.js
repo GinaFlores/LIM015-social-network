@@ -4,7 +4,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import {
   postCollection,
   getCollection,
-   deletePost,
+  deletePost,
   updatelike,
   updateDislike,
   postEdit,
