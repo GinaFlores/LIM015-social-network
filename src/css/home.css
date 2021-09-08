@@ -65,7 +65,7 @@ body {
     padding-top: 5rem;
 }
 .infoPhoto {
-    border-bottom: 1px solid #c1c0c0;;
+    border-bottom: 1px solid #c1c0c0;
 }
 .containerInfo {
     background: #fff;
@@ -153,7 +153,7 @@ textarea {
         margin-right: 20px;
         background-color: #986D8E;
         position: fixed;
-        left: 0;
+        /* left: 0; */
         top: 80px;
         width: 100%;
         padding: 20px 0;

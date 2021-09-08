@@ -1,5 +1,5 @@
-##Turistika
-####Solo para Chicas 
+## Turistika
+#### Solo para Chicas
 
 1. Preámbulo
 Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos vivir sin ellas.
