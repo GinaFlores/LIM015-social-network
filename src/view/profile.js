@@ -180,14 +180,11 @@ export const profile = () => {
             const decrement = -1;
             const idUser = localStorage.getItem('userId');
             const array = dataContent.array;
-            console.log(array);
             if (array.includes(idUser)) {
               const index = array.indexOf(idUser);
               array.splice(index, 1);
-              // console.log(e.target.dataset.id, decrement, array);
               await updateDislike(e.target.dataset.id, decrement, array);
             } else {
-              // console.log(e.target.dataset.id, decrement, array);
               await updatelike(array, e.target.dataset.id, increment, idUser);
             }
           });

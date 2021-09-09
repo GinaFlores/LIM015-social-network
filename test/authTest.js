@@ -1,15 +1,16 @@
 import {
-  registerUser,
-  logInWithEmail,
+  /* registerUser,
+  logInWithEmail, */
   logInWithGoogle,
-  logOut,
+  // logOut,
 } from '../src/firebase/firebaseAuth.js';
-// declarando las constantes de firebaseMock para las funciones de autenticacion 
+
 const firebasemock = require('firebase-mock');
+
 const mockauth = new firebasemock.MockFirebase();
 mockauth.autoFlush();
 global.firebase = firebasemock.MockFirebaseSdk(
-// use null if your code does not use RTDB
+  // use null if your code does not use RTDB
   () => null,
   () => mockauth,
 );
