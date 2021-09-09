@@ -32,13 +32,11 @@ export const writePost = (event) => {
     postCollection(user.email, user.displayName, user.uid, post, photo)
       .then(() => {
         document.getElementById('contentPost').value = '';
-        // eslint-disable-next-line no-console
-        console.log('agregando post');
       }).catch((error) => {
         console.log('no se agregó post', error);
       });
   } else {
-    alert('Ingrese su post');
+    /* alert('Ingrese su post'); */
   }
 };
 
@@ -49,8 +47,6 @@ export const observadorWatcher = () => {
     if (user !== null) {
       name = user.displayName;
       photo = user.photoURL;
-      console.log(user);
-      // menuNavegacionHome(displayName, photoURL);
     } else {
       window.location.hash = '#/LogIn';
     }

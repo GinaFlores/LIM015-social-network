@@ -57,19 +57,16 @@ export const profile = () => {
     const user = currentUser();
     const photo = currentUser().photoURL;
     const showName = localStorage.getItem('userEmail');
-    console.log(showName);
     if (textContent.value !== '') {
       postCollection(showName, user.email, post, photo)
         .then(() => {
           textContent.value = '';
-          console.log('agregando post');
         }).catch((error) => {
           console.log('no se agregó post', error);
         });
     } else {
       alert('Ingrese su post');
     }
-    console.log(showName, user.email, post, photo);
   };
   btnPost.addEventListener('click', (writePost));
 
