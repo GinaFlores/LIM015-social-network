@@ -30,6 +30,7 @@ export const home = () => {
             <button id="postButtonHom" type="submit"class="postButton">Publicar</button>
           </div>
         </div>
+        <span id="emptyPost"></span>
       </div>
       <div id="containerPostsHom"></div>
     </div>
@@ -42,6 +43,7 @@ export const home = () => {
   const nameUser = sectionHome.querySelector('#nameUserHom');
   const textContentHom = sectionHome.querySelector('#contentPostHom');
   const contentPostsHom = sectionHome.querySelector('#containerPostsHom');
+  // const emptyPost = sectionHome.querySelector('#emptyPost');
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
@@ -62,7 +64,6 @@ export const home = () => {
       postCollection(showName, user.email, post, photo)
         .then(() => {
           textContentHom.value = '';
-          console.log('agregando post');
         }).catch((error) => {
           console.log('no se agregó post', error);
         });

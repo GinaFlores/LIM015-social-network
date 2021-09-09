@@ -77,7 +77,6 @@ export const registerTemplate = () => {
       errorPassword.innerHTML = '';
       errorEmail.innerHTML = '';
       errorConfirmPassword.innerHTML = '';
-      console.log(nameUser, emailRegister, passwordRegister);
     }
   });
   return sectionRegister;
