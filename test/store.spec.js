@@ -39,18 +39,3 @@ describe('deletePost', () => {
       ));
   });
 });
-
-// Test de funcion para dar like post
-/* describe('updatelike', () => {
-  it('debería ser una función', () => {
-    expect(typeof postLike).toBe('function');
-  });
-  it('Debería poder dar like', (done) => updatelike('abc134', 1)
-    .then(() => getCollection(
-      (data) => {
-        const result = data.find((note) => note.like === 1);
-        expect(result.like).toBe(1);
-        done();
-      },
-    )));
-}); */
