@@ -31,34 +31,34 @@
 
 #### Diseño Desktop
 * ***Log In***
-![interfaz del Log In](./src/img/imgReadMe/prototipoDesktopLogIn.png)
+![interfaz del Log In](./src/img/imgReadMe/prototipoDesktopLogIn.PNG)
 
 * ***Register***
-![interfaz del Register](./src/img/imgReadMe/prototipoDesktopRegister.png)
+![interfaz del Register](./src/img/imgReadMe/prototipoDesktopRegister.PNG)
 
 * ***Home***
-![interfaz del Home](./src/img/imgReadMe/prototipoDesktopHome.png)
+![interfaz del Home](./src/img/imgReadMe/prototipoDesktopHome.PNG)
 
 * ***Profile***
-![interfaz del Profile](./src/img/imgReadMe/prototipoDesktopProfile.png)
+![interfaz del Profile](./src/img/imgReadMe/prototipoDesktopProfile.PNG)
 
 
 #### Diseño Mobile
 * ***Log In***
 
-    ![interfaz del Log In](./src/img/imgReadMe/prototipoMobileLogIn.png)
+    ![interfaz del Log In](./src/img/imgReadMe/prototipoMobileLogIn.PNG)
 
 * ***Register***
 
-    ![interfaz del Register](./src/img/imgReadMe/prototipoMobileRegister.png)
+    ![interfaz del Register](./src/img/imgReadMe/prototipoMobileRegister.PNG)
 
 * ***Home***
 
-    ![interfaz del Home](./src/img/imgReadMe/prototipoMobileHome.png)
+    ![interfaz del Home](./src/img/imgReadMe/prototipoMobileHome.PNG)
 
 * ***Profile***
 
-    ![interfaz del Profile](./src/img/imgReadMe/prototipoMobilePerfil.png)
+    ![interfaz del Profile](./src/img/imgReadMe/prototipoMobilePerfil.PNG)
 
 ***
 
