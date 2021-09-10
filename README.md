@@ -16,12 +16,15 @@
   Nuestro proyecto "Turistik" es una plataforma creada para mujeres que deseen conocer nuevos lugares y que por diferentes motivos tengan que viajar solas. Como ya es conocida dentro de nuestra realidad suele ser peligroso ir a lugares nuevos y alejados para una mujer cuando no está en compañía de alguna persona conocida. Es por ello, que nace Turistik para poder ser el nexo necesario que necesitan y conocer alguna otra usuaria que tenga los mismos intereses que ella y poder juntas generar un ambiente sororo. Además, de poder encontrar una compañía divertida y segura, también las usuarias pueden encontrar tips y consejos basados en la experiencia y conocimientos de las demás. En sencillas palabras, Turistik tiene como finalidad crear una comunidad sorora entre mujeres que quieren viajar seguras, compartir sus experiencias y promover el turismo entre las ellas.
 
  * ***Log In***
+
 ![interfaz del Log In](./src/img/imgReadMe/logIn.jpeg)
 
 * ***Register***
+
 ![interfaz del Registro](./src/img/imgReadMe/register.jpeg)
 
 * ***Home***
+
 ![interfaz del Home](./src/img/imgReadMe/perfil.jpeg)
 
 ***
@@ -30,20 +33,25 @@
   El prototipo que realizamos inicialmente es el que presentamos a continuación, como se puede apreciar, son dos presentaciones, para mobile y desktop. Este prototipo fue sometido a un testeo de usabilidad, con 5 mujeres con edades entre 18 y 36 años. Las recomendaciones y el feedback hicieron que modifiquemos nuestro proyecto final.
 
 #### Diseño Desktop
+
 * ***Log In***
-![interfaz del Log In](./src/img/imgReadMe/prototipoDesktopLogIn.PNG)
+
+    ![interfaz del Log In](./src/img/imgReadMe/prototipoDesktopLogIn.PNG)
 
 * ***Register***
-![interfaz del Register](./src/img/imgReadMe/prototipoDesktopRegister.PNG)
+
+    ![interfaz del Register](./src/img/imgReadMe/prototipoDesktopRegister.PNG)
 
 * ***Home***
-![interfaz del Home](./src/img/imgReadMe/prototipoDesktopHome.PNG)
+
+    ![interfaz del Home](./src/img/imgReadMe/prototipoDesktopHome.PNG)
 
 * ***Profile***
-![interfaz del Profile](./src/img/imgReadMe/prototipoDesktopProfile.PNG)
 
+    ![interfaz del Profile](./src/img/imgReadMe/prototipoDesktopProfile.PNG)
 
 #### Diseño Mobile
+
 * ***Log In***
 
     ![interfaz del Log In](./src/img/imgReadMe/prototipoMobileLogIn.PNG)
