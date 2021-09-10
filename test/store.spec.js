@@ -4,7 +4,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import {
   getCollection,
   deletePost,
-//  updatelike
+// updatelike
 } from '../src/firebase/firebaseStore.js';
 
 // Declarando la constante fixtureData
