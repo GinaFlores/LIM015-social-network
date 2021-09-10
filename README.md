@@ -1,4 +1,4 @@
-# **Turistika** (solo para chicas)
+# Turistik (solo para chicas)
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
@@ -13,7 +13,7 @@
 ***
 
 ## 2. Acerca de Turistik
-  Nuestro proyecto "Turistik" es una plataforma creada paramujeres que deseen conocer nuevos lugares y que pordiferentes motivos tengan que viajar solas. Como ya esconocida dentro de nuestra realidad suele ser peligroso ir alugares nuevos y alejados para una mujer cuando no está encompañía de alguna persona conocida. Es por ello, que naceTuristik para poder ser el nexo necesario que necesita paraconocer alguna otra usuaria que tenga los mismos interesesque ella y poder juntas generar un ambiente sororo entreellas. Además, de poder encontrar una compañía divertida ysorora, también las usuarias pueden encontrar tips yconsejos basados en la experiencia y conocimientos de lasdemás. En sencillas palabras, Turistik tiene como finalidadcrear una comunidad sorora entre mujeres que quieren viajarseguras, compartir sus experiencias y promover el turismoentre las mujeres.
+  Nuestro proyecto "Turistik" es una plataforma creada para mujeres que deseen conocer nuevos lugares y que por diferentes motivos tengan que viajar solas. Como ya es conocida dentro de nuestra realidad suele ser peligroso ir a lugares nuevos y alejados para una mujer cuando no está en compañía de alguna persona conocida. Es por ello, que nace Turistik para poder ser el nexo necesario que necesitan y conocer alguna otra usuaria que tenga los mismos intereses que ella y poder juntas generar un ambiente sororo. Además, de poder encontrar una compañía divertida y segura, también las usuarias pueden encontrar tips y consejos basados en la experiencia y conocimientos de las demás. En sencillas palabras, Turistik tiene como finalidad crear una comunidad sorora entre mujeres que quieren viajar seguras, compartir sus experiencias y promover el turismo entre las ellas.
 
  * ***Log In***
 ![interfaz del Log In](./src/img/imgReadMe/logIn.jpeg)
@@ -21,44 +21,44 @@
 * ***Register***
 ![interfaz del Registro](./src/img/imgReadMe/register.jpeg)
 
-* ***Perfil***
-![interfaz del Perfil](./src/img/imgReadMe/perfil.jpeg)
+* ***Home***
+![interfaz del Home](./src/img/imgReadMe/perfil.jpeg)
 
 ***
 
 ## 3. Prototipo en Figma
-  El prototipo que realizamos inicialmente es el quepresentammos a continuacion, como se puede apreciar, son dospresentaciones, para mobile y desktop. Este prototipo fuesometido a un testeo de usabilidad, con 5 mujeres con edadesentre 18 y 36 años. Las recomendaciones y el feedbackhicieron que modifiquemos nuestro proyecto final.
+  El prototipo que realizamos inicialmente es el que presentamos a continuación, como se puede apreciar, son dos presentaciones, para mobile y desktop. Este prototipo fue sometido a un testeo de usabilidad, con 5 mujeres con edades entre 18 y 36 años. Las recomendaciones y el feedback hicieron que modifiquemos nuestro proyecto final.
 
 #### Diseño Desktop
 * ***Log In***
 ![interfaz del Log In](./src/img/imgReadMe/prototipoDesktopLogIn.png)
 
 * ***Register***
-![alt text](./src/img/imgReadMe/prototipoDesktopRegister.png)
+![interfaz del Register](./src/img/imgReadMe/prototipoDesktopRegister.png)
 
 * ***Home***
-![alt text](../src/img/imgReadMe/prototipoDesktopHome.png)
+![interfaz del Home](./src/img/imgReadMe/prototipoDesktopHome.png)
 
 * ***Profile***
-![alt text](./src/img/imgReadMe/prototipoDesktopProfile.png)
+![interfaz del Profile](./src/img/imgReadMe/prototipoDesktopProfile.png)
 
 
 #### Diseño Mobile
 * ***Log In***
 
-    ![alt text](./src/img/imgReadMe/prototipoMobileLogIn.png)
+    ![interfaz del Log In](./src/img/imgReadMe/prototipoMobileLogIn.png)
 
 * ***Register***
 
-    ![alt text](./src/img/imgReadMe/prototipoMobileRegister.png)
+    ![interfaz del Register](./src/img/imgReadMe/prototipoMobileRegister.png)
 
 * ***Home***
 
-    ![alt text](./src/img/imgReadMe/prototipoMobileHome.png)
+    ![interfaz del Home](./src/img/imgReadMe/prototipoMobileHome.png)
 
 * ***Profile***
 
-    ![alt text](./src/img/imgReadMe/prototipoMobilePerfil.png)
+    ![interfaz del Profile](./src/img/imgReadMe/prototipoMobilePerfil.png)
 
 ***
 
@@ -76,8 +76,6 @@
  * En el perfil la usuaria puede ver exclusivamente sus publicaciones y gestionarlas más facilmente.
 
 ## 5. Objetivos de aprendizaje
-
-Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
 
 #### HTML
 
@@ -109,7 +107,6 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
 
 - Objetos (key, value)
 
-
 - Diferenciar entre tipos de datos primitivos y no primitivos
 
 - Variables (declaración, asignación, ámbito)
@@ -118,9 +115,7 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
 
 - Uso de bucles/ciclos (while, for, for..of)
 
-
 - Funciones (params, args, return)
-
 
 - Pruebas unitarias (unit tests)
 
