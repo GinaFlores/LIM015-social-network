@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import { logInWithGoogle, currentUser, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
 import { postCollection } from '../firebase/firebaseStore.js';

@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
   postCollection, getCollection, deletePost, updatelike, updateDislike, postEdit,

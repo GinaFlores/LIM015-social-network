@@ -53,7 +53,6 @@ export const logInTemplate = () => {
     } else {
       logInWithEmail(emailLogIn, passwordLogIn)
         .then((userCredential) => {
-          // eslint-disable-next-line max-len
           if (userCredential.user.displayName === null) {
             localStorage.getItem('userName');
           } else {

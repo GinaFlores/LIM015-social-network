@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 // eslint-disable-next-line import/named
 import { logOutClick, observadorWatcher } from '../lib/index.js';
 import { currentUser } from '../firebase/firebaseAuth.js';

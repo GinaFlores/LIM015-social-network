@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { registerWithEmail, emailVerication } from '../firebase/firebaseAuth.js';
 
 export const registerTemplate = () => {
