@@ -40,7 +40,7 @@ describe('logInWithGoogle', () => {
     }));
 });
 
-// Test cerrar sesion
+// Test funcion de cerrar sesion
 describe('logOut', () => {
   it('Se cierra sesión', () => logOut()
     .then((user) => {
