@@ -15,7 +15,7 @@ export const home = () => {
   <div class="containerHome">
     <div class="containerInfo">
       <div class="infoPhoto">
-        <div><img src="../img/viajera1.png" alt="photo profile" class="photoUserHome"></img></div>
+        <div><img src="./img/viajera1.png" alt="photo profile" class="photoUserHome"></img></div>
       </div>
       <p id="nameUserHom"></p>
       <p>Viajera</p>
@@ -23,7 +23,7 @@ export const home = () => {
     <!-- Escribir Publicación -->
     <div class="writePostContainer">
       <div class="divPostHome">
-        <img src="../img/viajera1.png" class="imgPost"></img>
+        <img src="./img/viajera1.png" class="imgPost"></img>
         <div class="post">
           <div class="postGroup">
             <textarea id="contentPostHom" cols="35" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
@@ -85,7 +85,7 @@ export const home = () => {
         contentPostsHom.innerHTML += `
           <div class="postProfileHome">
             <div class="datoProfile">
-              <img src="../img/viajera1.png" class="imgPost"></img>
+              <img src="./img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
                 <p id="userNameHome-${doc.id}">${dataContent.usuario}</p>
                 <span id="timeHome-${doc.id}">${dataContent.timePost.toDate().toDateString()}</span>

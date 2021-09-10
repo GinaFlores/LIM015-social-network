@@ -13,7 +13,7 @@ export const profile = () => {
   <div class="containerProfile">
     <div class="frontProfile"></div>
     <div class="container">
-      <div><img src="../img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
+      <div><img src="./img/viajera1.png" alt="photo profile" class="photoUser"></img></div>
     </div>
     <div class="details">
       <h4 id="nameUser"></h4>
@@ -22,7 +22,7 @@ export const profile = () => {
     <!-- Escribir Publicación -->
     <div class="writePostContainer">
       <div class="divPost">
-        <img src="../img/viajera1.png" class="imgPost"></img>
+        <img src="./img/viajera1.png" class="imgPost"></img>
         <div class="post">
           <div class="postGroup">
             <textarea id="contentPost" cols="35" roes="5"autofocus placeholder="¿Cuál es tu próximo destino?" required></textarea>
@@ -85,7 +85,7 @@ export const profile = () => {
           contentPosts.innerHTML += `
           <div class="postProfile">
             <div class="datoProfile">
-              <img src="../img/viajera1.png" class="imgPost"></img>
+              <img src="./img/viajera1.png" class="imgPost"></img>
               <div class="datoName">
                 <p id="userName-${doc.id}">${dataContent.usuario}</p>
                 <span id="time-${doc.id}">${dataContent.timePost.toDate().toDateString()}</span>
