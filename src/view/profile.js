@@ -77,9 +77,7 @@ export const profile = () => {
     getCollection().onSnapshot((collection) => {
       contentPosts.innerHTML = '';
       collection.forEach((doc) => {
-        // console.log(element.data());
         const dataContent = doc.data();
-        // console.log(dataContent);
         // eslint-disable-next-line eqeqeq
         if (dataContent.usuario == localStorage.getItem('userEmail')) {
           contentPosts.innerHTML += `

@@ -21,7 +21,6 @@ export const changeView = (route) => {
     case '#/Profile':
       viewRoot.appendChild(navigator());
       viewRoot.appendChild(components.Profile());
-      /* catchPost(); */
       break;
     default: viewRoot.appendChild(components.Error404());
   }

@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-import { logInWithGoogle, currentUser, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
-import { postCollection } from '../firebase/firebaseStore.js';
+import { logInWithGoogle, logOut /* registerWithEmail */ } from '../firebase/firebaseAuth.js';
 
 // inicio de sesion con google
 export const logInWithGoogleClick = () => {
@@ -21,24 +19,6 @@ export const logInWithGoogleClick = () => {
       // El correo electrónico de la cuenta del usuario utilizada.
       const email = error.email;
     });
-};
-
-// funcion para agregar post
-export const writePost = (event) => {
-  event.preventDefault();
-  const post = document.getElementById('contentPost').value;
-  const user = currentUser();
-  const photo = currentUser().photoURL;
-  if (post !== '') {
-    postCollection(user.email, user.displayName, user.uid, post, photo)
-      .then(() => {
-        document.getElementById('contentPost').value = '';
-      }).catch((error) => {
-        console.log('no se agregó post', error);
-      });
-  } else {
-    /* alert('Ingrese su post'); */
-  }
 };
 
 export const observadorWatcher = () => {

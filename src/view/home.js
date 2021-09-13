@@ -1,6 +1,5 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
-// eslint-disable-next-line import/named
 import { logOutClick, observadorWatcher } from '../lib/index.js';
 import { currentUser } from '../firebase/firebaseAuth.js';
 import {
@@ -45,7 +44,6 @@ export const home = () => {
   const nameUser = sectionHome.querySelector('#nameUserHom');
   const textContentHom = sectionHome.querySelector('#contentPostHom');
   const contentPostsHom = sectionHome.querySelector('#containerPostsHom');
-  // const emptyPost = sectionHome.querySelector('#emptyPost');
 
   // funcion para mostrar el nombre de usuaria
   if (localStorage.getItem('userName') == null) {
